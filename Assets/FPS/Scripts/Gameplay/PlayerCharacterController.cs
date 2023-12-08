@@ -223,6 +223,7 @@ namespace Unity.FPS.Gameplay
         {
             ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
         }
+
         [SerializeField]
         private int CurrentExperience, MaxExperience, CurrentLevel;
 
