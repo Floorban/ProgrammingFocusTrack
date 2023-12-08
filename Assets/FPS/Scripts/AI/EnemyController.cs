@@ -376,7 +376,7 @@ namespace Unity.FPS.AI
                 InstantiateLoot(transform.position);
             }
 
-            ExperienceManager.instance.IncreaseExperience(expAmount);
+            //ExperienceManager.instance.IncreaseExperience(expAmount);
 
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);

@@ -237,15 +237,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
+      propertyPath: lootList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
+        type: 3}
       propertyPath: lootList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c,
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
         type: 2}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382,
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -447,15 +452,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
+      propertyPath: lootList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
+        type: 3}
       propertyPath: lootList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c,
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
         type: 2}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382,
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -673,15 +683,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
+      propertyPath: lootList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
+        type: 3}
       propertyPath: lootList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c,
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
         type: 2}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382,
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4309,15 +4324,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
+      propertyPath: lootList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
+        type: 3}
       propertyPath: lootList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c,
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
         type: 2}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382,
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
