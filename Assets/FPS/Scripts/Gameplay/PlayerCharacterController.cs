@@ -132,7 +132,6 @@ namespace Unity.FPS.Gameplay
 
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
-
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
@@ -164,7 +163,7 @@ namespace Unity.FPS.Gameplay
             m_Controller.enableOverlapRecovery = true;
 
             m_Health.OnDie += OnDie;
-
+      
             // force the crouch state to false when starting
             SetCrouchingState(false, true);
             UpdateCharacterHeight(true);
@@ -216,6 +215,39 @@ namespace Unity.FPS.Gameplay
             HandleCharacterMovement();
         }
 
+        private void OnEnable()
+        {
+            ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
+        }
+        private void OnDisable()
+        {
+            ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
+        }
+        [SerializeField]
+        private int CurrentExperience, MaxExperience, CurrentLevel;
+
+        void HandleExperienceChange(int newExpAmount)
+        {
+            CurrentExperience += newExpAmount;
+            Debug.Log($"Get Exp! || Current Exp: {CurrentExperience} || Max Exp: {MaxExperience}");
+
+            if (CurrentExperience >= MaxExperience)
+            {
+                Debug.Log("Level Up!");
+                LevelUp();
+            }
+
+        }
+        void LevelUp()
+        {
+            CurrentLevel++;
+            MaxSpeedOnGround++;
+            JumpForce++;
+            m_Health.MaxHealth += 10f;
+            Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
+
+            CurrentExperience = 0;
+        }
         void OnDie()
         {
             IsDead = true;

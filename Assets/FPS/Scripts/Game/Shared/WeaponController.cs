@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace Unity.FPS.Game
 {
+   
     public enum WeaponShootType
     {
         Manual,

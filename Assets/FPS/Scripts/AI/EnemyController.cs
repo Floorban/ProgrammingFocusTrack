@@ -357,6 +357,8 @@ namespace Unity.FPS.AI
             }
         }
 
+        [SerializeField]
+        private int expAmount = 10;
         void OnDie()
         {
             // spawn a particle system when dying
@@ -371,6 +373,8 @@ namespace Unity.FPS.AI
             {
                 Instantiate(LootPrefab, transform.position, Quaternion.identity);
             }
+
+            ExperienceManager.instance.IncreaseExperience(expAmount);
 
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
