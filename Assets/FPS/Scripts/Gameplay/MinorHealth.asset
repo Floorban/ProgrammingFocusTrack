@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: MinorHealth
   m_EditorClassIdentifier: 
   healAmount: 10
+  lootPrefab: {fileID: 2529580269645609534, guid: b35e16cc1fa2d19438c1844fb5b4c831,
+    type: 3}
+  lootName: smallHealthKit
+  dropChance: 80

@@ -70,7 +70,8 @@ namespace Unity.FPS.AI
         public Transform DeathVfxSpawnPoint;
 
         [Header("Loot")] [Tooltip("The object this enemy can drop when dying")]
-        public GameObject LootPrefab;
+        //public GameObject LootPrefab;
+        public List<HealthBuff> lootList = new List<HealthBuff>();
 
         [Tooltip("The chance the object has to drop")] [Range(0, 1)]
         public float DropRate = 1f;
@@ -371,7 +372,8 @@ namespace Unity.FPS.AI
             // loot an object
             if (TryDropItem())
             {
-                Instantiate(LootPrefab, transform.position, Quaternion.identity);
+                //Instantiate(LootPrefab, transform.position, Quaternion.identity);
+                InstantiateLoot(transform.position);
             }
 
             ExperienceManager.instance.IncreaseExperience(expAmount);
@@ -379,7 +381,32 @@ namespace Unity.FPS.AI
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
         }
-
+        HealthBuff GetDroppedItem()
+        {
+            int randomNumber = Random.Range(1, 101);
+            List<HealthBuff> possibleItems = new List<HealthBuff>();
+            foreach (HealthBuff item in lootList)
+            {
+                if (randomNumber <= item.dropChance)
+                {
+                    possibleItems.Add(item);
+                }
+            }
+            if (possibleItems.Count > 0)
+            {
+                HealthBuff droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
+                return droppedItem;
+            }
+            return null;
+        }
+        public void InstantiateLoot(Vector3 spawnPosition)
+        {
+            HealthBuff droppedItem = GetDroppedItem();
+            if (droppedItem != null)
+            {
+                GameObject lootGameObejct = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity); 
+            }
+        }
         void OnDrawGizmosSelected()
         {
             // Path reaching range
@@ -437,7 +464,8 @@ namespace Unity.FPS.AI
 
         public bool TryDropItem()
         {
-            if (DropRate == 0 || LootPrefab == null)
+            //  if (DropRate == 0 || LootPrefab == null)
+            if (DropRate == 0 || lootList == null)
                 return false;
             else if (DropRate == 1)
                 return true;
