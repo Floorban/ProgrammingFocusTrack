@@ -225,7 +225,7 @@ namespace Unity.FPS.Gameplay
         }
 
         [SerializeField]
-        private int CurrentExperience, MaxExperience, CurrentLevel;
+        public float CurrentExperience, MaxExperience, CurrentLevel;
 
         void HandleExperienceChange(int newExpAmount)
         {
@@ -241,13 +241,14 @@ namespace Unity.FPS.Gameplay
         }
         void LevelUp()
         {
-            CurrentLevel++;
+            /*CurrentLevel++;
             MaxSpeedOnGround++;
             JumpForce++;
-            m_Health.MaxHealth += 10f;
-            Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
+            m_Health.MaxHealth += 10f;*/
 
+            MaxExperience += 10;
             CurrentExperience = 0;
+            Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
         }
         void OnDie()
         {
