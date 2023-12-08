@@ -71,7 +71,7 @@ namespace Unity.FPS.AI
 
         [Header("Loot")] [Tooltip("The object this enemy can drop when dying")]
         //public GameObject LootPrefab;
-        public List<HealthBuff> lootList = new List<HealthBuff>();
+        public List<Loot> lootList = new List<Loot>();
 
         [Tooltip("The chance the object has to drop")] [Range(0, 1)]
         public float DropRate = 1f;
@@ -381,11 +381,11 @@ namespace Unity.FPS.AI
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
         }
-        HealthBuff GetDroppedItem()
+        Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
-            List<HealthBuff> possibleItems = new List<HealthBuff>();
-            foreach (HealthBuff item in lootList)
+            List<Loot> possibleItems = new List<Loot>();
+            foreach (Loot item in lootList)
             {
                 if (randomNumber <= item.dropChance)
                 {
@@ -394,17 +394,17 @@ namespace Unity.FPS.AI
             }
             if (possibleItems.Count > 0)
             {
-                HealthBuff droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
+                Loot droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
                 return droppedItem;
             }
             return null;
         }
         public void InstantiateLoot(Vector3 spawnPosition)
         {
-            HealthBuff droppedItem = GetDroppedItem();
-            if (droppedItem != null)
+            Loot droppedItem = GetDroppedItem();
+            if (droppedItem != null && droppedItem.lootPrefab != null)
             {
-                GameObject lootGameObejct = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity); 
+                GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
             }
         }
         void OnDrawGizmosSelected()
