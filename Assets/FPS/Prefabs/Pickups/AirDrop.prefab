@@ -185,12 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede176deea46cf744b4f41352c3b41b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airDrop: {fileID: 934333826541392960}
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
-  - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
-  - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}
+  - {fileID: 11400000, guid: 432321fa087cdb04cb4c74456dd654f9, type: 2}
+  - {fileID: 11400000, guid: 352d698f71290964584feba387967e9f, type: 2}
 --- !u!1 &5666244925417731592
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,12 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede176deea46cf744b4f41352c3b41b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airDrop: {fileID: 934333826541392960}
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
-  - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
-  - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}
+  - {fileID: 11400000, guid: 432321fa087cdb04cb4c74456dd654f9, type: 2}
+  - {fileID: 11400000, guid: 352d698f71290964584feba387967e9f, type: 2}
 --- !u!1 &6359261015209649708
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,9 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede176deea46cf744b4f41352c3b41b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airDrop: {fileID: 934333826541392960}
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
-  - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
-  - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}
+  - {fileID: 11400000, guid: 432321fa087cdb04cb4c74456dd654f9, type: 2}
+  - {fileID: 11400000, guid: 352d698f71290964584feba387967e9f, type: 2}

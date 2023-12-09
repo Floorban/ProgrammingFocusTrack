@@ -1,10 +1,11 @@
-using Unity.FPS.Game;
+using UnityEngine;
 
 namespace Unity.FPS.Gameplay
 {
     public class ExpPickUp : Pickup
     {
         public PowerUpEffect powerUpEffect;
+
         protected override void OnPicked(PlayerCharacterController player)
         {
             if (player != null)

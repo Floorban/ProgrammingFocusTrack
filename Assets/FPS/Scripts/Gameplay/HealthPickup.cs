@@ -6,7 +6,6 @@ namespace Unity.FPS.Gameplay
     {
         //[Header("Parameters")] [Tooltip("Amount of health to heal on pickup")]
         //public float HealAmount;
-
         public PowerUpEffect powerUpEffect;
         protected override void OnPicked(PlayerCharacterController player)
         {
