@@ -1,6 +1,7 @@
 ﻿using Unity.FPS.Game;
 using UnityEngine;
 
+public delegate void PickupEventHandler();
 namespace Unity.FPS.Gameplay
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
@@ -22,6 +23,8 @@ namespace Unity.FPS.Gameplay
         Collider m_Collider;
         Vector3 m_StartPosition;
         bool m_HasPlayedFeedback;
+
+        public static event PickupEventHandler OnPickup;
 
         protected virtual void Start()
         {
@@ -65,6 +68,17 @@ namespace Unity.FPS.Gameplay
         protected virtual void OnPicked(PlayerCharacterController playerController)
         {
             PlayPickupFeedback();
+
+            if (CanPickUpItem(playerController))
+            {
+                OnPickup?.Invoke();
+            }
+        }
+
+        protected virtual bool CanPickUpItem(PlayerCharacterController playerController)
+        {
+            AirDropSlot airDropSlot = GetComponent<AirDropSlot>();
+            return airDropSlot != null;
         }
 
         public void PlayPickupFeedback()

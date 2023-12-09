@@ -15,9 +15,13 @@ namespace Unity.FPS.Gameplay
             {
                 //playerHealth.Heal(HealAmount);
                 powerUpEffect.Apply(player.gameObject);
-                PlayPickupFeedback();
-                Destroy(gameObject);
+                //PlayPickupFeedback();
+                //Destroy(gameObject);
             }
+            base.OnPicked(player);
+
+            // Destroy the game object after handling the pickup
+            Destroy(gameObject);
         }
 
     }
