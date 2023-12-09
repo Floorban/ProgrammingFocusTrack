@@ -35,7 +35,7 @@ public class AirDrop : MonoBehaviour
 
         if (isOpen && isPickup)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }
