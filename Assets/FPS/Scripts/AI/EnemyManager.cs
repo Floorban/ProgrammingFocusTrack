@@ -39,6 +39,23 @@ namespace Unity.FPS.AI
             GameObject newEnemy = Instantiate(enemyPrefabs);
             newEnemy.transform.position = position;
         }
+        Vector3 RandomPosition()
+        {
+            Vector3 position = new Vector3();
+            float f = Random.value > 0.5f ? -1f : 1f;
+            if (Random.value > 0.5f)
+            {
+                position.x = Random.Range(-spawnArea.x, spawnArea.x);
+                position.z = spawnArea.z * f;
+            }
+            else
+            {
+                position.z = Random.Range(-spawnArea.z, spawnArea.z);
+                position.x = spawnArea.x * f;
+            }
+            position.y = 0;
+            return position;
+        }
         public void RegisterEnemy(EnemyController enemy)
         {
             Enemies.Add(enemy);

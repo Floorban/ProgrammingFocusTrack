@@ -5426,12 +5426,12 @@ PrefabInstance:
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: spawnArea.x
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: spawnArea.z
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
