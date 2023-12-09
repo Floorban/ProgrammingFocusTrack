@@ -265,6 +265,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 659242980304191356, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
+        type: 2}
+    - target: {fileID: 659242980304191356, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
+        type: 2}
     - target: {fileID: 934333826541392960, guid: 65badfd2df1bea2409e3f6c44ab858e4,
         type: 3}
       propertyPath: slotList.Array.size
@@ -285,11 +297,35 @@ PrefabInstance:
       propertyPath: slotList.Array.data[2]
       value: 
       objectReference: {fileID: 1898908690}
+    - target: {fileID: 2769194984454756505, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
+        type: 2}
+    - target: {fileID: 2769194984454756505, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
+        type: 2}
     - target: {fileID: 6359261015209649708, guid: 65badfd2df1bea2409e3f6c44ab858e4,
         type: 3}
       propertyPath: m_Name
       value: AirDrop
       objectReference: {fileID: 0}
+    - target: {fileID: 8579918432277929087, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
+        type: 2}
+    - target: {fileID: 8579918432277929087, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+        type: 3}
+      propertyPath: lootList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
+        type: 2}
     - target: {fileID: 8918543292696738862, guid: 65badfd2df1bea2409e3f6c44ab858e4,
         type: 3}
       propertyPath: m_LocalPosition.x

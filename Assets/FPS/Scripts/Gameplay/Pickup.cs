@@ -26,6 +26,8 @@ namespace Unity.FPS.Gameplay
 
         public static event PickupEventHandler OnPickup;
 
+        public bool isSlot;
+
         protected virtual void Start()
         {
             PickupRigidbody = GetComponent<Rigidbody>();
@@ -69,17 +71,12 @@ namespace Unity.FPS.Gameplay
         {
             PlayPickupFeedback();
 
-            if (CanPickUpItem(playerController))
+            if (isSlot)
             {
                 OnPickup?.Invoke();
             }
         }
 
-        protected virtual bool CanPickUpItem(PlayerCharacterController playerController)
-        {
-            AirDropSlot airDropSlot = GetComponent<AirDropSlot>();
-            return airDropSlot != null;
-        }
 
         public void PlayPickupFeedback()
         {

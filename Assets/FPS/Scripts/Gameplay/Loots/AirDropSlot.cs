@@ -36,7 +36,7 @@ public class AirDropSlot : MonoBehaviour
         if (droppedItem != null && droppedItem.lootPrefab != null)
         {
             GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
-            lootGameObject.transform.parent = transform.parent;
+            lootGameObject.transform.parent = transform;
 
         }
     }
