@@ -7,9 +7,6 @@ using Unity.FPS.Game;
 [System.Serializable]
 public class AirDropSlot : MonoBehaviour
 {
-    public delegate void PickupEventHandler();
-    public event PickupEventHandler OnPickupChange;
-
     public List<Loot> lootList = new List<Loot>();
 
     Loot GetDroppedItem()

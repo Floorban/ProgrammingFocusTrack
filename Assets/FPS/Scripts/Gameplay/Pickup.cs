@@ -1,7 +1,7 @@
 ﻿using Unity.FPS.Game;
 using UnityEngine;
 
-public delegate void PickupEventHandler();
+
 namespace Unity.FPS.Gameplay
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
@@ -25,6 +25,7 @@ namespace Unity.FPS.Gameplay
         bool m_HasPlayedFeedback;
 
         public static event PickupEventHandler OnPickup;
+        public delegate void PickupEventHandler();
 
         public bool isSlot;
 
