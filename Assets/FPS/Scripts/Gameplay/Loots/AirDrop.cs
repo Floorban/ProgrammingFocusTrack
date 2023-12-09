@@ -11,12 +11,18 @@ public class AirDrop : MonoBehaviour
     private bool isPickup;
     private void OnEnable()
     {
-        Pickup.instance.OnPickupChange += HandlePickup;
+        foreach (AirDropSlot slot in slotList)
+        {
+            slot.OnPickupChange += HandlePickup;
+        }
     }
 
     private void OnDisable()
     {
-        Pickup.instance.OnPickupChange -= HandlePickup;
+        foreach (AirDropSlot slot in slotList)
+        {
+            slot.OnPickupChange -= HandlePickup;
+        }
     }
     private void HandlePickup()
     {

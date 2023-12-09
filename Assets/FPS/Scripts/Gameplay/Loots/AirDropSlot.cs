@@ -1,10 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.FPS.Gameplay;
+using Unity.FPS.Game;
 
+
+[System.Serializable]
 public class AirDropSlot : MonoBehaviour
 {
+    public delegate void PickupEventHandler();
+    public event PickupEventHandler OnPickupChange;
+
     public List<Loot> lootList = new List<Loot>();
- 
+
     Loot GetDroppedItem()
     {
         int randomNumber = Random.Range(1, 101);
@@ -30,6 +37,7 @@ public class AirDropSlot : MonoBehaviour
         {
             GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
             lootGameObject.transform.parent = transform.parent;
+
         }
     }
 }

@@ -7,24 +7,6 @@ namespace Unity.FPS.Gameplay
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Pickup : MonoBehaviour
     {
-        public static Pickup instance;
-        public event PickupEventHandler OnPickupChange;
-
-        public bool isSlot;
-
-        private void Awake()
-        {
-            if (instance != null && instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                instance = this;
-            }
-        }
-
-
         [Tooltip("Frequency at which the item will move up and down")]
         public float VerticalBobFrequency = 1f;
 
@@ -41,6 +23,8 @@ namespace Unity.FPS.Gameplay
         Collider m_Collider;
         Vector3 m_StartPosition;
         bool m_HasPlayedFeedback;
+
+        public static event PickupEventHandler OnPickup;
 
         protected virtual void Start()
         {
@@ -84,12 +68,18 @@ namespace Unity.FPS.Gameplay
         protected virtual void OnPicked(PlayerCharacterController playerController)
         {
             PlayPickupFeedback();
-            if (isSlot)
+
+            if (CanPickUpItem(playerController))
             {
-                OnPickupChange?.Invoke();
+                OnPickup?.Invoke();
             }
         }
 
+        protected virtual bool CanPickUpItem(PlayerCharacterController playerController)
+        {
+            AirDropSlot airDropSlot = GetComponent<AirDropSlot>();
+            return airDropSlot != null;
+        }
 
         public void PlayPickupFeedback()
         {
