@@ -14,8 +14,6 @@ namespace Unity.FPS.Gameplay
                 //Destroy(gameObject);
             }
             base.OnPicked(player);
-
-            // Destroy the game object after handling the pickup
             Destroy(gameObject);
         }
     }
