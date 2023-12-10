@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: SmallExpPoint
+  m_Name: Major_Exp
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 214836500958637935, guid: 34e7ab1f5818a2f49829ac1a51a665ed,
+  lootPrefab: {fileID: 214836500958637935, guid: 552853e7e6b12114a8d295fac7d9a113,
     type: 3}
-  lootName: SmallExpPoint
-  dropChance: 90
+  lootName: Major_Exp
+  dropChance: 70

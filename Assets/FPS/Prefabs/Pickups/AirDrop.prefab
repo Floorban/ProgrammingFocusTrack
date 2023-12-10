@@ -162,9 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
   - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
   - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}
 --- !u!1 &5666244925417731592
 GameObject:
@@ -211,9 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
   - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
   - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}
 --- !u!1 &6359261015209649708
 GameObject:
@@ -364,7 +360,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
   - {fileID: 11400000, guid: e8a729cc71666c149801d94f1e20d85c, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
   - {fileID: 11400000, guid: f6b6ae3a2054efb4a9899dbe31e72382, type: 2}

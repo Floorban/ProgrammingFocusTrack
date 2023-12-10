@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: SmallHpKit
+  m_Name: Minor_Exp
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 2529580269645609534, guid: b35e16cc1fa2d19438c1844fb5b4c831,
+  lootPrefab: {fileID: 214836500958637935, guid: 34e7ab1f5818a2f49829ac1a51a665ed,
     type: 3}
-  lootName: SmallHpKit
-  dropChance: 80
+  lootName: Minor_Exp
+  dropChance: 90
