@@ -1,61 +1,65 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.FPS.Gameplay;
-using Unity.FPS.Game;
 
-public class AirDrop : MonoBehaviour, IInteractable
+namespace Unity.FPS.Gameplay
 {
-    public List<AirDropSlot> slotList = new List<AirDropSlot>();
-    [SerializeField]
-    private bool canOpen;
-    [SerializeField]
-    private bool isOpen;
-    [SerializeField]
-    private bool isPickup;
-    public int requiredLevel = 3;
-
-    private void OnEnable()
+    public class AirDrop : MonoBehaviour, IInteractable
     {
-        Pickup.OnPickup += HandlePickup;
-        PlayerCharacterController.OnLevelCompare += HandleUnlock;
-    }
-
-    private void OnDisable()
-    {
-        Pickup.OnPickup -= HandlePickup;
-        PlayerCharacterController.OnLevelCompare -= HandleUnlock;
-    }
-
-    private void HandlePickup()
-    {
-        isPickup = true;
-    }
-    private void HandleUnlock(int amount)
-    {
-        canOpen = amount >= requiredLevel;
-    }
-    private void Update()
-    {
-        if (isOpen && isPickup)
+        public List<AirDropSlot> slotList = new List<AirDropSlot>();
+        [SerializeField]
+        private bool canOpen;
+        [SerializeField]
+        private bool isOpen;
+        [SerializeField]
+        private bool isPickup;
+        [SerializeField]
+        public PlayerCharacterController playerCharacterController;
+        private void OnEnable()
         {
-            Destroy(gameObject);
+            Pickup.OnPickup += HandlePickup;
         }
-    }
 
-    public void Interact()
-    {
-        if (canOpen)
+        private void OnDisable()
         {
-            foreach (AirDropSlot slot in slotList)
+            Pickup.OnPickup -= HandlePickup;
+        }
+
+        private void HandlePickup()
+        {
+            isPickup = true;
+        }
+
+        private void Start()
+        {
+            playerCharacterController = GetComponent<PlayerCharacterController>();
+
+        }
+
+        private void Update()
+        {
+            //canOpen = player.OpenCounter >= 1;
+            if (isOpen && isPickup)
             {
-                slot.InstantiateLoot(slot.transform.position);
+                Destroy(gameObject);
             }
-            isOpen = true;
         }
-        else
+
+        public void Interact()
         {
-            Debug.Log("Not enough level to open the airdrop!");
+            if (canOpen)
+            {
+                foreach (AirDropSlot slot in slotList)
+                {
+                    slot.InstantiateLoot(slot.transform.position);
+                }
+                playerCharacterController.OpenCounter--;
+                isOpen = true;
+            }
+            else
+            {
+                Debug.Log("Not enough level to open the airdrop!");
+            }
         }
     }
-
 }
+

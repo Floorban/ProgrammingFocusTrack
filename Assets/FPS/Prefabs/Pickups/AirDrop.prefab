@@ -267,9 +267,10 @@ MonoBehaviour:
   - {fileID: 659242980304191356}
   - {fileID: 8579918432277929087}
   - {fileID: 2769194984454756505}
+  canOpen: 0
   isOpen: 0
   isPickup: 0
-  requiredLevel: 3
+  playerCharacterController: {fileID: 0}
 --- !u!65 &1921490552651244800
 BoxCollider:
   m_ObjectHideFlags: 0
