@@ -246,16 +246,17 @@ namespace Unity.FPS.Gameplay
         {
             CurrentLevel++;
             OpenCounter++;
-           /* MaxSpeedOnGround++;
-            JumpForce++;
-            m_Health.MaxHealth += 10f;*/
 
             MaxExperience += 10;
             CurrentExperience = 0;
             Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
-           
-        }
 
+            ChoosePowerup();
+        }
+        void ChoosePowerup()
+        {
+
+        }
         void OnDie()
         {
             IsDead = true;
