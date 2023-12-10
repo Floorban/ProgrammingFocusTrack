@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 2769194984454756505}
   isOpen: 0
   isPickup: 0
+  requiredLevel: 3
 --- !u!65 &1921490552651244800
 BoxCollider:
   m_ObjectHideFlags: 0

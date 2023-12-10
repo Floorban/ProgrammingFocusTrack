@@ -132,6 +132,10 @@ namespace Unity.FPS.Gameplay
 
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
+
+        public delegate void LevelCompareHandler(int amount);
+        public static event LevelCompareHandler OnLevelCompare;
+
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
@@ -171,6 +175,7 @@ namespace Unity.FPS.Gameplay
 
         void Update()
         {
+            OnLevelCompare?.Invoke(CurrentLevel);
             // check for Y kill
             if (!IsDead && transform.position.y < KillHeight)
             {
@@ -225,7 +230,9 @@ namespace Unity.FPS.Gameplay
         }
 
         [SerializeField]
-        public float CurrentExperience, MaxExperience, CurrentLevel;
+        public float CurrentExperience, MaxExperience;
+        [SerializeField]
+        public int CurrentLevel;
 
         void HandleExperienceChange(int newExpAmount)
         {
@@ -241,15 +248,17 @@ namespace Unity.FPS.Gameplay
         }
         void LevelUp()
         {
-            /*CurrentLevel++;
-            MaxSpeedOnGround++;
+            CurrentLevel++;
+           /* MaxSpeedOnGround++;
             JumpForce++;
             m_Health.MaxHealth += 10f;*/
 
             MaxExperience += 10;
             CurrentExperience = 0;
             Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
+           
         }
+
         void OnDie()
         {
             IsDead = true;
