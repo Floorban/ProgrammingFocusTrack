@@ -31,13 +31,13 @@ namespace Unity.FPS.Gameplay
 
         private void Start()
         {
-            playerCharacterController = GetComponent<PlayerCharacterController>();
+            playerCharacterController = FindObjectOfType<PlayerCharacterController>();
 
         }
 
         private void Update()
         {
-            //canOpen = player.OpenCounter >= 1;
+            canOpen = playerCharacterController.OpenCounter >= 1;
             if (isOpen && isPickup)
             {
                 Destroy(gameObject);
