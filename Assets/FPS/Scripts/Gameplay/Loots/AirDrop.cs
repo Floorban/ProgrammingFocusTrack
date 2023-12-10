@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.FPS.Gameplay;
 
-public class AirDrop : MonoBehaviour
+public class AirDrop : MonoBehaviour, IInteractable
 {
     public List<AirDropSlot> slotList = new List<AirDropSlot>();
     [SerializeField]
@@ -24,18 +24,18 @@ public class AirDrop : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && !isOpen)
-        {
-            foreach (AirDropSlot slot in slotList)
-            {
-                slot.InstantiateLoot(slot.transform.position);
-            }
-            isOpen = true;
-        }
-
         if (isOpen && isPickup)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Interact()
+    {
+        foreach (AirDropSlot slot in slotList)
+        {
+            slot.InstantiateLoot(slot.transform.position);
+        }
+        isOpen = true;
     }
 }
