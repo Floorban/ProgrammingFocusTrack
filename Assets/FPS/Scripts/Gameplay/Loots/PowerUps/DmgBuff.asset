@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7384a16d13f046b439ed9261eeb57ed1, type: 3}
-  m_Name: JumpBuff
+  m_Script: {fileID: 11500000, guid: ab3dc107dba6f3744b0d9bf814549776, type: 3}
+  m_Name: DmgBuff
   m_EditorClassIdentifier: 
-  amount: 3
+  amount: 5

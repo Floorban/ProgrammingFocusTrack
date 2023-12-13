@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 using UnityEngine;
 
-public class DmgBuff : MonoBehaviour
+[CreateAssetMenu(menuName = "PowerUps/DmgBuff")]
+public class DmgBuff : PowerUpEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public float amount;
+    public override void Apply(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.GetComponent<ProjectileStandard>().Damage += amount;
     }
 }

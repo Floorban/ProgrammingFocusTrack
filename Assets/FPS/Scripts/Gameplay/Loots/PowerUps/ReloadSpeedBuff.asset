@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7384a16d13f046b439ed9261eeb57ed1, type: 3}
-  m_Name: JumpBuff
+  m_Script: {fileID: 11500000, guid: 335b76ae6d97fba48a936eefe7a5427d, type: 3}
+  m_Name: ReloadSpeedBuff
   m_EditorClassIdentifier: 
-  amount: 3
+  amount: 5

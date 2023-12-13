@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25b5a1c1404786429319c67cd2ec717, type: 3}
   m_Name: SpeedBuff
   m_EditorClassIdentifier: 
-  amount: 1
+  amount: 3
