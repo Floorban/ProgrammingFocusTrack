@@ -1,7 +1,5 @@
 using Unity.FPS.UI;
-using Unity.FPS.Game;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -15,8 +13,11 @@ public class UpgradeButton : MonoBehaviour
     private bool isWeapon;
     private void Start()
     {
+        upgradePanelManager = GetComponentInParent<UpgradePanelManager>();
+        player = GameObject.FindWithTag("Player");
         weapon = GameObject.FindWithTag("PlayerWeapon");
     }
+ 
     public void OnClicked()
     {
         if (!isWeapon)
