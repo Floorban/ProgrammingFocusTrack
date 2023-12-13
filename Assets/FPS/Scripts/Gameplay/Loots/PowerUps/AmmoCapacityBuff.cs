@@ -5,8 +5,8 @@ using UnityEngine;
 public class AmmoCapacityBuff: WeaponPowerupEffect
 {
     public int amount;
-    public override void ApplyWeapon(WeaponController weapon)
+    public override void ApplyWeapon(GameObject weapon)
     {
-        weapon.MaxAmmo += amount;
+        weapon.GetComponent<WeaponController>().MaxAmmo += amount;
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttackSpeedBuff : WeaponPowerupEffect
 {
     public float amount;
-    public override void ApplyWeapon(WeaponController weapon)
+    public override void ApplyWeapon(GameObject weapon)
     {
-        weapon.DelayBetweenShots -= amount;
+        weapon.GetComponent<WeaponController>().DelayBetweenShots -= amount;
     }
 }

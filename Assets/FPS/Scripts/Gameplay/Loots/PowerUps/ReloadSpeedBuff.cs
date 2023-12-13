@@ -5,8 +5,8 @@ using UnityEngine;
 public class ReloadSpeedBuff : WeaponPowerupEffect
 {
     public float amount;
-    public override void ApplyWeapon(WeaponController weapon)
+    public override void ApplyWeapon(GameObject weapon)
     {
-        weapon.AmmoReloadRate += amount;
+        weapon.GetComponent<WeaponController>().AmmoReloadRate += amount;
     }
 }

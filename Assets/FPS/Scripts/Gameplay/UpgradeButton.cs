@@ -9,10 +9,14 @@ public class UpgradeButton : MonoBehaviour
     public WeaponPowerupEffect weaponPowerupEffect;
     public UpgradePanelManager upgradePanelManager;
     public GameObject player;
-    public WeaponController weapon;
+    public GameObject weapon;
 
     [SerializeField]
     private bool isWeapon;
+    private void Start()
+    {
+        weapon = GameObject.FindWithTag("PlayerWeapon");
+    }
     public void OnClicked()
     {
         if (!isWeapon)

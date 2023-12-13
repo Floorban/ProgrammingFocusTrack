@@ -5,8 +5,8 @@ using UnityEngine;
 public class ReloadDurationBuff : WeaponPowerupEffect
 {
     public float amount;
-    public override void ApplyWeapon(WeaponController weapon)
+    public override void ApplyWeapon(GameObject weapon)
     {
-        weapon.AmmoReloadDelay -= amount;
+        weapon.GetComponent<WeaponController>().AmmoReloadDelay -= amount;
     }
 }
