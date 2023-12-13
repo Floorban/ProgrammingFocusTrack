@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543a4d723df11ff44b0d20e37181b444, type: 3}
   m_Name: AttackSpeedBuff
   m_EditorClassIdentifier: 
-  amount: 5
+  amount: 0.05

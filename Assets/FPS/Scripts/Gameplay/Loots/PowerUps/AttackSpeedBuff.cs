@@ -2,11 +2,11 @@ using Unity.FPS.Game;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PowerUps/AttackSpeedBuff")]
-public class AttackSpeedBuff : PowerUpEffect
+public class AttackSpeedBuff : WeaponPowerupEffect
 {
     public float amount;
-    public override void Apply(GameObject player)
+    public override void ApplyWeapon(WeaponController weapon)
     {
-        player.GetComponent<WeaponController>().DelayBetweenShots += amount;
+        weapon.GetComponent<WeaponController>().DelayBetweenShots -= amount;
     }
 }

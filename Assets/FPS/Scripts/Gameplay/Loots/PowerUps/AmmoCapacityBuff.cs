@@ -2,11 +2,11 @@ using Unity.FPS.Game;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PowerUps/AmmoCapacityBuff")]
-public class AmmoCapacityBuff: PowerUpEffect
+public class AmmoCapacityBuff: WeaponPowerupEffect
 {
     public int amount;
-    public override void Apply(GameObject player)
+    public override void ApplyWeapon(WeaponController weapon)
     {
-        player.GetComponent<WeaponController>().MaxAmmo += amount;
+        weapon.GetComponent<WeaponController>().MaxAmmo += amount;
     }
 }

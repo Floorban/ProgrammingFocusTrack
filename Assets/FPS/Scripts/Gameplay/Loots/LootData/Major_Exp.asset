@@ -15,4 +15,4 @@ MonoBehaviour:
   lootPrefab: {fileID: 214836500958637935, guid: 552853e7e6b12114a8d295fac7d9a113,
     type: 3}
   lootName: Major_Exp
-  dropChance: 70
+  dropChance: 100

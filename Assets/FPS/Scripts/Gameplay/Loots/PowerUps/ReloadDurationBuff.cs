@@ -2,11 +2,11 @@ using Unity.FPS.Game;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PowerUps/ReloadDurationBuff")]
-public class ReloadDurationBuff : PowerUpEffect
+public class ReloadDurationBuff : WeaponPowerupEffect
 {
     public float amount;
-    public override void Apply(GameObject player)
+    public override void ApplyWeapon(WeaponController weapon)
     {
-        player.GetComponent<WeaponController>().AmmoReloadDelay -= amount;
+        weapon.GetComponent<WeaponController>().AmmoReloadDelay -= amount;
     }
 }

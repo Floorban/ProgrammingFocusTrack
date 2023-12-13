@@ -92,7 +92,15 @@ namespace Unity.FPS.Gameplay
         float m_TimeStartedWeaponSwitch;
         WeaponSwitchState m_WeaponSwitchState;
         int m_WeaponSwitchNewWeaponIndex;
+        private void Awake()
+        {
+            // Add starting weapons
+            foreach (var weapon in StartingWeapons)
+            {
+                AddWeapon(weapon);
+            }
 
+        }
         void Start()
         {
             ActiveWeaponIndex = -1;
@@ -110,12 +118,7 @@ namespace Unity.FPS.Gameplay
 
             OnSwitchedToWeapon += OnWeaponSwitched;
 
-            // Add starting weapons
-            foreach (var weapon in StartingWeapons)
-            {
-                AddWeapon(weapon);
-            }
-
+    
             SwitchWeapon(true);
         }
 
