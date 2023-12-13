@@ -66,6 +66,8 @@ namespace Unity.FPS.Gameplay
 
         const QueryTriggerInteraction k_TriggerInteraction = QueryTriggerInteraction.Collide;
 
+        public PlayerCharacterController player;
+
         void OnEnable()
         {
             m_ProjectileBase = GetComponent<ProjectileBase>();
@@ -75,6 +77,8 @@ namespace Unity.FPS.Gameplay
             m_ProjectileBase.OnShoot += OnShoot;
 
             Destroy(gameObject, MaxLifeTime);
+
+            player = FindObjectOfType<PlayerCharacterController>();
         }
 
         new void OnShoot()
@@ -226,7 +230,7 @@ namespace Unity.FPS.Gameplay
             if (AreaOfDamage)
             {
                 // area damage
-                AreaOfDamage.InflictDamageInArea(Damage, point, HittableLayers, k_TriggerInteraction,
+                AreaOfDamage.InflictDamageInArea(Damage + player.dmg, point, HittableLayers, k_TriggerInteraction,
                     m_ProjectileBase.Owner);
             }
             else
@@ -235,7 +239,7 @@ namespace Unity.FPS.Gameplay
                 Damageable damageable = collider.GetComponent<Damageable>();
                 if (damageable)
                 {
-                    damageable.InflictDamage(Damage, false, m_ProjectileBase.Owner);
+                    damageable.InflictDamage(Damage + player.dmg, false, m_ProjectileBase.Owner);
                 }
             }
 

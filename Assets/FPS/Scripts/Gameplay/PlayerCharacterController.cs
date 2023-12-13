@@ -134,6 +134,7 @@ namespace Unity.FPS.Gameplay
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
 
+        public float dmg;
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();

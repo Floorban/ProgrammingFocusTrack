@@ -8,6 +8,7 @@ public class DmgBuff : PowerUpEffect
     public float amount;
     public override void Apply(GameObject player)
     {
-        player.GetComponent<ProjectileStandard>().Damage += amount;
+        //player.GetComponent<ProjectileStandard>().Damage += amount;
+        player.GetComponent<PlayerCharacterController>().dmg += amount;
     }
 }

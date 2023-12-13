@@ -148,7 +148,7 @@ MonoBehaviour:
   powerUpEffect: {fileID: 11400000, guid: 1bcb4cbc9dffca64f8781270c1222447, type: 2}
   weaponPowerupEffect: {fileID: 0}
   upgradePanelManager: {fileID: 0}
-  player: {fileID: 3659995153115176983, guid: 3c6b27d949cdda749892906e1f1d1b27, type: 3}
+  player: {fileID: 0}
   weapon: {fileID: 0}
   isWeapon: 0
-  isPlayer: 1
+  isPlayer: 0
