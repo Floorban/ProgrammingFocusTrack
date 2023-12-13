@@ -9,15 +9,17 @@ namespace Unity.FPS.UI
         [SerializeField] GameObject panel;
         public List<Loot> lootList = new List<Loot>();
         public Transform canvas;
+
+        private List<GameObject> spawnedLootObjects = new List<GameObject>();
         public void OpenPanel()
         {
             Time.timeScale = 0f;
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Vector3 position = new Vector3( 0f, 100f, 0);
-            Vector3 position2 = new Vector3(300, 100f, 0);
-            Vector3 position3 = new Vector3(600f, 100f, 0);
+            Vector3 position = new Vector3( 50f, 100f, 0);
+            Vector3 position2 = new Vector3(250, 100f, 0);
+            Vector3 position3 = new Vector3(450f, 100f, 0);
             InstantiateLoot(position);
             InstantiateLoot(position2);
             InstantiateLoot(position3);
@@ -27,7 +29,13 @@ namespace Unity.FPS.UI
         {
             Time.timeScale = 1f;
             panel.SetActive(false);
-          
+            foreach (GameObject lootObject in spawnedLootObjects)
+            {
+                Destroy(lootObject);
+            }
+
+            // Clear the list after destroying
+            spawnedLootObjects.Clear();
             Debug.Log("sad");
         }
         Loot GetDroppedItem()
@@ -55,6 +63,8 @@ namespace Unity.FPS.UI
             {
                 GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
                 lootGameObject.transform.parent = canvas.transform;
+
+                spawnedLootObjects.Add(lootGameObject);
 
             }
         }
