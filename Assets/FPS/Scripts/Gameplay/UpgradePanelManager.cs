@@ -17,9 +17,9 @@ namespace Unity.FPS.UI
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Vector3 position = new Vector3( 50f, 100f, 0);
-            Vector3 position2 = new Vector3(250, 100f, 0);
-            Vector3 position3 = new Vector3(450f, 100f, 0);
+            Vector3 position = new Vector3( 170f, 150f, 0);
+            Vector3 position2 = new Vector3(270, 150f, 0);
+            Vector3 position3 = new Vector3(370f, 150f, 0);
             InstantiateLoot(position);
             InstantiateLoot(position2);
             InstantiateLoot(position3);

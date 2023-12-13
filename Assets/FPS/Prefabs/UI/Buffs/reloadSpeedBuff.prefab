@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7483217937276369941
+--- !u!1 &5044715851025321791
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 697638959278416304}
-  - component: {fileID: 5181468557024381455}
-  - component: {fileID: 5300472413681068531}
-  - component: {fileID: 4245691552097011608}
-  - component: {fileID: 7303986542385998950}
+  - component: {fileID: 4089718804292866956}
+  - component: {fileID: 4916012314109156584}
+  - component: {fileID: 8778969163895952820}
+  - component: {fileID: 102741665777407129}
+  - component: {fileID: 8935539962858835329}
   m_Layer: 5
-  m_Name: jumpBuff
+  m_Name: reloadSpeedBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &697638959278416304
+--- !u!224 &4089718804292866956
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483217937276369941}
+  m_GameObject: {fileID: 5044715851025321791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -39,21 +39,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5181468557024381455
+--- !u!222 &4916012314109156584
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483217937276369941}
+  m_GameObject: {fileID: 5044715851025321791}
   m_CullTransparentMesh: 1
---- !u!114 &5300472413681068531
+--- !u!114 &8778969163895952820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483217937276369941}
+  m_GameObject: {fileID: 5044715851025321791}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a8c12bb128822b14c87e476124cd2c78, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d91eee0c88cd6340884faa59be677f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,13 +77,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4245691552097011608
+--- !u!114 &102741665777407129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483217937276369941}
+  m_GameObject: {fileID: 5044715851025321791}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -117,11 +117,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 5300472413681068531}
+  m_TargetGraphic: {fileID: 8778969163895952820}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7303986542385998950}
+      - m_Target: {fileID: 8935539962858835329}
         m_TargetAssemblyTypeName: UpgradeButton, fps.Gameplay
         m_MethodName: OnClicked
         m_Mode: 1
@@ -133,22 +133,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7303986542385998950
+--- !u!114 &8935539962858835329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483217937276369941}
+  m_GameObject: {fileID: 5044715851025321791}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfe04e8d2f9d62d429c360bcfe4b640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpEffect: {fileID: 11400000, guid: 9f474c26efd734842a31e6a17f65c9f1, type: 2}
-  weaponPowerupEffect: {fileID: 0}
+  powerUpEffect: {fileID: 0}
+  weaponPowerupEffect: {fileID: 11400000, guid: 0926d3ea0d8179141b904bca403c510b,
+    type: 2}
   upgradePanelManager: {fileID: 0}
   player: {fileID: 0}
   weapon: {fileID: 0}
-  isWeapon: 0
+  isWeapon: 1
   isPlayer: 0

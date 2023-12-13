@@ -11,11 +11,18 @@ public class UpgradeButton : MonoBehaviour
 
     [SerializeField]
     private bool isWeapon;
+    [SerializeField]
+    private bool isPlayer;
     private void Start()
     {
         upgradePanelManager = GetComponentInParent<UpgradePanelManager>();
-        player = GameObject.FindWithTag("Player");
-        weapon = GameObject.FindWithTag("PlayerWeapon");
+       
+        if (!isPlayer)
+        {
+            player = GameObject.FindWithTag("Player");
+            weapon = GameObject.FindWithTag("PlayerWeapon");
+
+        }
     }
  
     public void OnClicked()
