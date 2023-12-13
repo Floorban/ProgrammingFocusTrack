@@ -251,7 +251,7 @@ namespace Unity.FPS.Gameplay
             CurrentLevel++;
             OpenCounter++;
 
-            MaxExperience += 10;
+            MaxExperience += 3;
             CurrentExperience = 0;
             Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
 

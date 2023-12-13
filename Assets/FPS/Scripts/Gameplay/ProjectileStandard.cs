@@ -224,24 +224,47 @@ namespace Unity.FPS.Gameplay
             return true;
         }
 
+        public bool isPlayerWeapon;
         void OnHit(Vector3 point, Vector3 normal, Collider collider)
         {
-            // damage
-            if (AreaOfDamage)
+            if(isPlayerWeapon)
             {
-                // area damage
-                AreaOfDamage.InflictDamageInArea(Damage + player.dmg, point, HittableLayers, k_TriggerInteraction,
-                    m_ProjectileBase.Owner);
-            }
-            else
-            {
-                // point damage
-                Damageable damageable = collider.GetComponent<Damageable>();
-                if (damageable)
+                // damage
+                if (AreaOfDamage)
                 {
-                    damageable.InflictDamage(Damage + player.dmg, false, m_ProjectileBase.Owner);
+                    // area damage
+                    AreaOfDamage.InflictDamageInArea(Damage + player.dmg, point, HittableLayers, k_TriggerInteraction,
+                        m_ProjectileBase.Owner);
+                }
+                else
+                {
+                    // point damage
+                    Damageable damageable = collider.GetComponent<Damageable>();
+                    if (damageable)
+                    {
+                        damageable.InflictDamage(Damage + player.dmg, false, m_ProjectileBase.Owner);
+                    }
+                }
+            }else
+            {
+                // damage
+                if (AreaOfDamage)
+                {
+                    // area damage
+                    AreaOfDamage.InflictDamageInArea(Damage, point, HittableLayers, k_TriggerInteraction,
+                        m_ProjectileBase.Owner);
+                }
+                else
+                {
+                    // point damage
+                    Damageable damageable = collider.GetComponent<Damageable>();
+                    if (damageable)
+                    {
+                        damageable.InflictDamage(Damage, false, m_ProjectileBase.Owner);
+                    }
                 }
             }
+          
 
             // impact vfx
             if (ImpactVfx)
