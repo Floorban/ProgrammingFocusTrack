@@ -7,6 +7,6 @@ public class ReloadDurationBuff : WeaponPowerupEffect
     public float amount;
     public override void ApplyWeapon(WeaponController weapon)
     {
-        weapon.GetComponent<WeaponController>().AmmoReloadDelay -= amount;
+        weapon.AmmoReloadDelay -= amount;
     }
 }

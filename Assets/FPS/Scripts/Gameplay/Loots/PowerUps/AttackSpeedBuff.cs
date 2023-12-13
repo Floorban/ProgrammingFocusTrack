@@ -7,6 +7,6 @@ public class AttackSpeedBuff : WeaponPowerupEffect
     public float amount;
     public override void ApplyWeapon(WeaponController weapon)
     {
-        weapon.GetComponent<WeaponController>().DelayBetweenShots -= amount;
+        weapon.DelayBetweenShots -= amount;
     }
 }

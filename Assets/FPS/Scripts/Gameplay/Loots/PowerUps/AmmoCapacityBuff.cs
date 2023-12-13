@@ -7,6 +7,6 @@ public class AmmoCapacityBuff: WeaponPowerupEffect
     public int amount;
     public override void ApplyWeapon(WeaponController weapon)
     {
-        weapon.GetComponent<WeaponController>().MaxAmmo += amount;
+        weapon.MaxAmmo += amount;
     }
 }
