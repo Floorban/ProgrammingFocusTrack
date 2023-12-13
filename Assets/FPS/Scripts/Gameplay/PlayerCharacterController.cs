@@ -1,7 +1,7 @@
 ﻿using Unity.FPS.Game;
-using Unity.FPS.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.FPS.UI;
 
 namespace Unity.FPS.Gameplay
 {
@@ -231,7 +231,7 @@ namespace Unity.FPS.Gameplay
         [SerializeField]
         public int CurrentLevel, OpenCounter;
         [SerializeField]
-        public UpgradePanelManager upgradePanelManager;
+        public UpgradePanelManager levelUpManager;
 
         void HandleExperienceChange(int newExpAmount)
         {
@@ -254,7 +254,7 @@ namespace Unity.FPS.Gameplay
             CurrentExperience = 0;
             Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
 
-            upgradePanelManager.OpenPanel();
+            levelUpManager.OpenPanel();
         }
         void OnDie()
         {

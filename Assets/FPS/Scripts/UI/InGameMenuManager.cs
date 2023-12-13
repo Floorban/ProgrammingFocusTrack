@@ -125,8 +125,8 @@ namespace Unity.FPS.UI
             }
 
         }
-
-        void OnMouseSensitivityChanged(float newValue)
+    
+    void OnMouseSensitivityChanged(float newValue)
         {
             m_PlayerInputsHandler.LookSensitivity = newValue;
         }

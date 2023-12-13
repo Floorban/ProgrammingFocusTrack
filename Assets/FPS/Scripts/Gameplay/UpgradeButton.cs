@@ -1,6 +1,7 @@
 using Unity.FPS.UI;
 using Unity.FPS.Gameplay;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class UpgradeButton : MonoBehaviour
     {
         powerUpEffect.Apply(player.gameObject);
         upgradePanelManager.ClosePanel();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Debug.Log("clicked");
     }
 }
