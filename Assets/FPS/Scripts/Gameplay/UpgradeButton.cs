@@ -11,5 +11,6 @@ public class UpgradeButton : MonoBehaviour
     {
         powerUpEffect.Apply(player.gameObject);
         upgradePanelManager.ClosePanel();
+        Debug.Log("clicked");
     }
 }
