@@ -32,15 +32,17 @@ namespace Unity.FPS.AI
         }
         void SpawnEnemy()
         {
-            Vector3 position = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
-            CheckRandomPosition();
+            //Vector3 position = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
+            Vector3 position = GetRandomPosition();
 
             position += playerTransform.position;
 
             GameObject newEnemy = Instantiate(enemyPrefabs);
             newEnemy.transform.position = position;
         }
-        Vector3 CheckRandomPosition()
+
+        // To prevent the enemie appears right near the player
+        Vector3 GetRandomPosition()
         {
             Vector3 position = new Vector3();
             float f = Random.value > 0.5f ? -1f : 1f;
