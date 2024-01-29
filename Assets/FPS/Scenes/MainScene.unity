@@ -8597,7 +8597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 11400000, guid: 39f9f9c9a8f4a104b8092577e1708e6b, type: 2}
-  abilityKeys: 0101000001010000
+  abilityKeys: 0101000002010000
 --- !u!1001 &2729281214182533258
 PrefabInstance:
   m_ObjectHideFlags: 0
