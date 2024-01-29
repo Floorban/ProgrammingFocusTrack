@@ -5,46 +5,18 @@ namespace Unity.FPS.Gameplay
 {
     public class AirDrop : MonoBehaviour, IInteractable
     {
-        //public List<AirDropSlot> slotList = new List<AirDropSlot>();
-        [SerializeField]
-        private bool canOpen;
-        [SerializeField]
-        private bool isOpen;
-        [SerializeField]
-        private bool isPickup;
-        [SerializeField]
-        public PlayerCharacterController playerCharacterController;
-        private void OnEnable()
-        {
-            Pickup.OnPickup += HandlePickup;
-        }
-
-        private void OnDisable()
-        {
-            Pickup.OnPickup -= HandlePickup;
-        }
-
-        private void HandlePickup()
-        {
-            isPickup = true;
-        }
+        [SerializeField] bool canOpen;
+        [SerializeField] PlayerCharacterController playerCharacterController;
+        [SerializeField] List<Loot> lootList = new List<Loot>();
 
         private void Start()
         {
             playerCharacterController = FindObjectOfType<PlayerCharacterController>();
-
         }
-
         private void Update()
         {
             canOpen = playerCharacterController.openCounter >= 1; 
-            if (isOpen && isPickup)
-            {
-                Destroy(gameObject);
-            }
         }
-        public List<Loot> lootList = new List<Loot>();
-
         Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
@@ -63,14 +35,12 @@ namespace Unity.FPS.Gameplay
             }
             return null;
         }
-        public void InstantiateLoot(Vector3 spawnPosition)
+         void InstantiateLoot(Vector3 spawnPosition)
         {
             Loot droppedItem = GetDroppedItem();
             if (droppedItem != null && droppedItem.lootPrefab != null)
             {
                 GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
-                lootGameObject.transform.parent = transform;
-
             }
         }
         public void Interact()
@@ -81,7 +51,7 @@ namespace Unity.FPS.Gameplay
                 InstantiateLoot(position);
 
                 playerCharacterController.openCounter--;
-                isOpen = true;
+                Destroy(gameObject);
             }
             else
             {

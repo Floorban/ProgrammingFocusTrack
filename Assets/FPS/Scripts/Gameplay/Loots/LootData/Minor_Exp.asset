@@ -15,4 +15,4 @@ MonoBehaviour:
   lootPrefab: {fileID: 214836500958637935, guid: 34e7ab1f5818a2f49829ac1a51a665ed,
     type: 3}
   lootName: Minor_Exp
-  dropChance: 90
+  dropChance: 100

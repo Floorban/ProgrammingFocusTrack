@@ -24,11 +24,6 @@ namespace Unity.FPS.Gameplay
         Vector3 m_StartPosition;
         bool m_HasPlayedFeedback;
 
-        public static event PickupEventHandler OnPickup;
-        public delegate void PickupEventHandler();
-
-        public bool isSlot;
-
         protected virtual void Start()
         {
             PickupRigidbody = GetComponent<Rigidbody>();
@@ -71,11 +66,6 @@ namespace Unity.FPS.Gameplay
         protected virtual void OnPicked(PlayerCharacterController playerController)
         {
             PlayPickupFeedback();
-
-            if (isSlot)
-            {
-                OnPickup?.Invoke();
-            }
         }
 
 

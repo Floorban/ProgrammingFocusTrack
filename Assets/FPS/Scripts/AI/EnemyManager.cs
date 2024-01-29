@@ -14,11 +14,12 @@ namespace Unity.FPS.AI
         [SerializeField] GameObject enemyPrefabs;
         [SerializeField] Vector3 spawnArea;
         [SerializeField] float spawnTimer, timer;
-        [SerializeField] GameObject player;
+        [SerializeField] Transform playerTransform;
 
         void Awake()
         {
             Enemies = new List<EnemyController>();
+            playerTransform = FindObjectOfType<PlayerCharacterController>().transform;
         }
         private void Update()
         {
@@ -32,13 +33,14 @@ namespace Unity.FPS.AI
         void SpawnEnemy()
         {
             Vector3 position = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
+            CheckRandomPosition();
 
-            position += player.transform.position;
+            position += playerTransform.position;
 
             GameObject newEnemy = Instantiate(enemyPrefabs);
             newEnemy.transform.position = position;
         }
-        Vector3 RandomPosition()
+        Vector3 CheckRandomPosition()
         {
             Vector3 position = new Vector3();
             float f = Random.value > 0.5f ? -1f : 1f;

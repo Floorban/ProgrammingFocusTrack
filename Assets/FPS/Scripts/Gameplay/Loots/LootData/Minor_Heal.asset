@@ -15,4 +15,4 @@ MonoBehaviour:
   lootPrefab: {fileID: 2529580269645609534, guid: b35e16cc1fa2d19438c1844fb5b4c831,
     type: 3}
   lootName: Minor_Heal
-  dropChance: 80
+  dropChance: 100
