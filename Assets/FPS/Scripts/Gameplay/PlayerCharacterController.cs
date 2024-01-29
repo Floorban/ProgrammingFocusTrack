@@ -134,10 +134,12 @@ namespace Unity.FPS.Gameplay
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
 
+        [Header("Leveling system")]
         [SerializeField] private UpgradePanelManager levelUpManager;
         public float currentExperience, maxExperience;
         public int currentLevel, openCounter;
 
+        [Header("Power-up modifier")]
         [SerializeField] private float moveSpeedModifier, jumpForceModifier;
         public float dmg;
         void Awake()

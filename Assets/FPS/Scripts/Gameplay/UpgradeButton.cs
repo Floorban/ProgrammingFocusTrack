@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UpgradeButton : MonoBehaviour
 {
     public UpgradePanelManager upgradePanelManager;
-    public GameObject player;
     public PlayerCharacterController playerController;
     public GameObject weapon;
     public WeaponController weaponController;
@@ -22,9 +21,17 @@ public class UpgradeButton : MonoBehaviour
     private void Start()
     {
         upgradePanelManager = GetComponentInParent<UpgradePanelManager>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerCharacterController>();
-        health = player.GetComponent<Health>();
+
+        PlayerCharacterController playerCharacterController =
+                         GameObject.FindObjectOfType<PlayerCharacterController>();
+        DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, UpgradeButton>(
+            playerCharacterController, this);
+
+        playerController = playerCharacterController.GetComponent<PlayerCharacterController>();
+        DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, UpgradeButton>(playerController, this,
+            playerCharacterController.gameObject);
+
+        health = playerCharacterController.GetComponent<Health>();
         weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
         weaponController = weapon.GetComponent<WeaponController>();
         button = GetComponent<Button>();
