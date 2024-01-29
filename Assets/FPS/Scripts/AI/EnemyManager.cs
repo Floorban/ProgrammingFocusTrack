@@ -13,9 +13,8 @@ namespace Unity.FPS.AI
 
         [SerializeField] GameObject enemyPrefabs;
         [SerializeField] Vector3 spawnArea;
-        [SerializeField] float spawnTimer;
-        private float timer;
-        public GameObject player;
+        [SerializeField] float spawnTimer, timer;
+        [SerializeField] GameObject player;
 
         void Awake()
         {

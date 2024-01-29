@@ -7,10 +7,10 @@ namespace Unity.FPS.UI
 {
     public class UpgradePanelManager : MonoBehaviour
     {
-        [SerializeField] private List<Loot> lootList = new List<Loot>();
-        [SerializeField] private GameObject panel;
-        [SerializeField] private Transform canvas;
-        [SerializeField] private List<GameObject> spawnedLootObjects = new List<GameObject>();
+        [SerializeField] List<Loot> lootList = new List<Loot>();
+        [SerializeField] GameObject panel;
+        [SerializeField] Transform canvas;
+        [SerializeField] List<GameObject> spawnedLootObjects = new List<GameObject>();
         public void OpenPanel()
         {
             Time.timeScale = 0f;
@@ -39,7 +39,7 @@ namespace Unity.FPS.UI
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        private Loot GetDroppedItem()
+        Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
             List<Loot> possibleItems = new List<Loot>();
@@ -58,7 +58,7 @@ namespace Unity.FPS.UI
             return null;
         }
 
-        public void InstantiateButtons(Transform parentTransform, int numberOfButtons)
+        void InstantiateButtons(Transform parentTransform, int numberOfButtons)
         {
             for (int i = 0; i < numberOfButtons; i++)
             {

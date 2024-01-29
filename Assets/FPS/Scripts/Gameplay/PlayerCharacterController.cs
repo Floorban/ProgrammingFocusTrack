@@ -135,12 +135,12 @@ namespace Unity.FPS.Gameplay
         const float k_GroundCheckDistanceInAir = 0.07f;
 
         [Header("Leveling system")]
-        [SerializeField] private UpgradePanelManager levelUpManager;
+        [SerializeField] UpgradePanelManager levelUpManager;
         public float currentExperience, maxExperience;
         public int currentLevel, openCounter;
 
         [Header("Power-up modifier")]
-        [SerializeField] private float moveSpeedModifier, jumpForceModifier;
+        [SerializeField] float moveSpeedModifier, jumpForceModifier;
         public float dmg;
         void Awake()
         {
@@ -244,6 +244,7 @@ namespace Unity.FPS.Gameplay
         {
             jumpForceModifier += modifierChange;
         }
+
         /*private void OnEnable()
          {
              ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
@@ -253,7 +254,7 @@ namespace Unity.FPS.Gameplay
              ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
          }*/
 
-        private void HandleExperienceChange(int newExpAmount)
+        void HandleExperienceChange(int newExpAmount)
         {
             currentExperience += newExpAmount;
             Debug.Log($"Get Exp! || Current Exp: {currentExperience} || Max Exp: {maxExperience}");
@@ -265,7 +266,7 @@ namespace Unity.FPS.Gameplay
             }
 
         }
-        private void LevelUp()
+        void LevelUp()
         {
             currentLevel++;
             openCounter++;

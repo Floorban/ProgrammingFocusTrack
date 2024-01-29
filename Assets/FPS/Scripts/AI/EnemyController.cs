@@ -114,11 +114,11 @@ namespace Unity.FPS.AI
 
         [Header("Loot")]
         [Tooltip("The object this enemy can drop when dying")]
-        [SerializeField] private List<Loot> lootList = new List<Loot>();
+        [SerializeField] List<Loot> lootList = new List<Loot>();
 
         [Tooltip("The chance the object has to drop")]
         [Range(0, 1)]
-        [SerializeField] private float dropRate = 1f;
+        [SerializeField] float dropRate = 1f;
 
         void Start()
         {
@@ -376,7 +376,7 @@ namespace Unity.FPS.AI
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
         }
-        private bool TryDropItem()
+        bool TryDropItem()
         {
             if (dropRate == 0 || lootList == null)
                 return false;
@@ -385,7 +385,7 @@ namespace Unity.FPS.AI
             else
                 return (Random.value <= dropRate);
         }
-        private Loot GetDroppedItem()
+        Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
             List<Loot> possibleItems = new List<Loot>();
@@ -403,7 +403,7 @@ namespace Unity.FPS.AI
             }
             return null;
         }
-        private void InstantiateLoot(Vector3 spawnPosition)
+        void InstantiateLoot(Vector3 spawnPosition)
         {
             Loot droppedItem = GetDroppedItem();
             if (droppedItem != null && droppedItem.lootPrefab != null)
