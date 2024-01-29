@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.FPS.Game;
 using UnityEngine;
 
-public class Ability : ScriptableObject
+namespace Unity.FPS.Gameplay
 {
-    public string abilityName;
-    public float activeTime;
-    public float cooldownTime;
-    public virtual void Activate(GameObject player)
+    public class Ability : ScriptableObject
     {
+        public string abilityName;
+        public float activeTime;
+        public float cooldownTime;
+        public virtual void Activate(GameObject player)
+        {
 
+        }
     }
+
 }

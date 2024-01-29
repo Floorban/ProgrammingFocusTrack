@@ -1,51 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.FPS.Game;
 using UnityEngine;
 
-public class AbilityState : MonoBehaviour
+namespace Unity.FPS.Gameplay
 {
-    public Ability ability;
-    float activeTime, cooldownTime;
-    [SerializeField] KeyCode abilityKey;
-    enum State
+    public class AbilityState : MonoBehaviour
     {
-        ready,
-        activated,
-        cooldown
-    }
-    State state = State.ready;
-    void Update()
-    {
-        switch(state)
+        public Ability ability;
+        float activeTime, cooldownTime;
+        [SerializeField] KeyCode abilityKey;
+        enum State
         {
-            case State.ready:
-                if (Input.GetKeyDown(abilityKey))
-                {
-                    ability.Activate(gameObject);
-                    state = State.activated;
-                    activeTime = ability.activeTime;
-                }
-                break;
-            case State.activated:
-                if (activeTime > 0)
-                {
-                    activeTime -= Time.deltaTime;
-                }else
-                {
-                    state = State.cooldown;
-                    cooldownTime = ability.cooldownTime;
-                }
-                break;
-            case State.cooldown:
-                if (cooldownTime > 0)
-                {
-                    cooldownTime -= Time.deltaTime;
-                }
-                else
-                {
-                    state = State.ready;
-                }
-                break;
+            ready,
+            activated,
+            cooldown
+        }
+        State state = State.ready;
+        void Update()
+        {
+            switch (state)
+            {
+                case State.ready:
+                    if (Input.GetKeyDown(abilityKey))
+                    {
+                        ability.Activate(gameObject);
+                        state = State.activated;
+                        activeTime = ability.activeTime;
+                    }
+                    break;
+                case State.activated:
+                    if (activeTime > 0)
+                    {
+                        activeTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        state = State.cooldown;
+                        cooldownTime = ability.cooldownTime;
+                    }
+                    break;
+                case State.cooldown:
+                    if (cooldownTime > 0)
+                    {
+                        cooldownTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        state = State.ready;
+                    }
+                    break;
+            }
         }
     }
 }
+
