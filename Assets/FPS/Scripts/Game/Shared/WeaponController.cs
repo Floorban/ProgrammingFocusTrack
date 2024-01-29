@@ -55,8 +55,7 @@ namespace Unity.FPS.Game
 
         [Tooltip("Minimum duration between two shots")]
         public float DelayBetweenShots = 0.5f;
-        [SerializeField]
-        private float attackSpeedModifier = 0f;
+        [SerializeField] float attackSpeedModifier = 0f;
 
         [Tooltip("Angle for the cone in which the bullets will be shot randomly (0 means no spread at all)")]
         public float BulletSpreadAngle = 0f;
@@ -90,18 +89,15 @@ namespace Unity.FPS.Game
         [Range(1, 30)] public int ShellPoolSize = 1;
         [Tooltip("Amount of ammo reloaded per second")]
         public float AmmoReloadRate = 1f;
-        [SerializeField]
-        private float reloadSpeedModifier = 1f;
+        [SerializeField] float reloadSpeedModifier = 1f;
 
         [Tooltip("Delay after the last shot before starting to reload")]
         public float AmmoReloadDelay = 2f;
-        [SerializeField]
-        private float reloadDelayModifier = 1f;
+        [SerializeField] float reloadDelayModifier = 1f;
 
         [Tooltip("Maximum amount of ammo in the gun")]
         public int MaxAmmo = 8;
-        [SerializeField]
-        private int ammoCapacityModifier = 1;
+        [SerializeField] int ammoCapacityModifier = 1;
 
         [Header("Charging parameters (charging weapons only)")]
         [Tooltip("Trigger a shot when maximum charge is reached")]
@@ -261,7 +257,6 @@ namespace Unity.FPS.Game
             ammoCapacityModifier += modifierChange;
             MaxAmmo += ammoCapacityModifier;
         }
-
         void UpdateAmmo()
         {
             if (AutomaticReload && m_LastTimeShot + AmmoReloadDelay * reloadDelayModifier < Time.time && m_CurrentAmmo < MaxAmmo && !IsCharging)
@@ -411,7 +406,10 @@ namespace Unity.FPS.Game
                     return false;
             }
         }
-
+        public void ModifyAttackSpeed(float modifierChange)
+        {
+            attackSpeedModifier += modifierChange;
+        }
         bool TryShoot()
         {
             if (m_CurrentAmmo >= 1f
@@ -442,11 +440,6 @@ namespace Unity.FPS.Game
             }
 
             return false;
-        }
-
-        public void ModifyAttackSpeed (float modifierChange)
-        {
-            attackSpeedModifier += modifierChange;
         }
 
         bool TryReleaseCharge()
