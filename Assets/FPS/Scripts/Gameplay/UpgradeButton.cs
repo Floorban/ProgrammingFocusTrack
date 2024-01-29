@@ -1,42 +1,70 @@
 using Unity.FPS.UI;
+using Unity.FPS.Gameplay;
+using Unity.FPS.Game;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    public PowerUpEffect powerUpEffect;
-    public WeaponPowerupEffect weaponPowerupEffect;
     public UpgradePanelManager upgradePanelManager;
     public GameObject player;
+    public PlayerCharacterController playerController;
     public GameObject weapon;
+    public WeaponController weaponController;
+    public Health health;
 
     [SerializeField]
-    private bool isWeapon;
+    private Button button;
     [SerializeField]
-    private bool isPlayer;
+    private float amount;
+    [SerializeField]
+    private int buttonID, intAmount;
     private void Start()
     {
         upgradePanelManager = GetComponentInParent<UpgradePanelManager>();
-       
-        if (!isPlayer)
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerController = player.GetComponent<PlayerCharacterController>();
+        health = player.GetComponent<Health>();
+        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        weaponController = weapon.GetComponent<WeaponController>();
+        button = GetComponent<Button>();
+        button.onClick.AddListener(Clicked);
+    }
+    public void Clicked()
+    {
+        switch (buttonID)
         {
-            player = GameObject.FindWithTag("Player");
-            weapon = GameObject.FindWithTag("PlayerWeapon");
+            case 0:
+                playerController.ModifyMoveSpeed(amount);
+                break;
+            case 1:
+                playerController.ModifyJumpForce(amount);
+                break;
+            case 2:
+                playerController.ModifyDmg(amount);
+                break;
+            case 3:
+                health.ModifyMaxHp(amount);
+                break;
+            case 4:
+                weaponController.ModifyAttackSpeed(amount);
+                break;
+            case 5:
+                weaponController.ModifyReloadSpeed(amount);
+                break;
+            case 6:
+                weaponController.ModifyReloadDelay(amount);
+                break;
+            case 7:
+                weaponController.ModifyAmmoCapacity(intAmount);
+                break;
+            case 8:
+                playerController.SkillScale(amount);
+                break;
 
         }
-    }
- 
-    public void OnClicked()
-    {
-        if (!isWeapon)
-        {
-            powerUpEffect.Apply(player.gameObject);
-        }else
-        {
-            weaponPowerupEffect.ApplyWeapon(weapon);
-        }
+
         upgradePanelManager.ClosePanel();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Debug.Log("clicked");
     }
+
 }

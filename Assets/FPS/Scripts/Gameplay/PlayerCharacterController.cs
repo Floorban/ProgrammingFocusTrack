@@ -134,6 +134,8 @@ namespace Unity.FPS.Gameplay
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
 
+        [SerializeField]
+        private float moveSpeedModifier, jumpForceModifier;
         public float dmg;
         void Awake()
         {
@@ -144,6 +146,7 @@ namespace Unity.FPS.Gameplay
 
         void Start()
         {
+            
             // fetch components on the same gameObject
             m_Controller = GetComponent<CharacterController>();
             DebugUtility.HandleErrorIfNullGetComponent<CharacterController, PlayerCharacterController>(m_Controller,
@@ -216,6 +219,16 @@ namespace Unity.FPS.Gameplay
             UpdateCharacterHeight(false);
 
             HandleCharacterMovement();
+            
+        }
+
+        public void SkillScale(float factor)
+        {
+            this.gameObject.transform.localScale *= factor;
+        }
+        public void ModifyDmg(float modifierChange)
+        {
+            dmg += modifierChange;
         }
 
         private void OnEnable()
@@ -365,7 +378,7 @@ namespace Unity.FPS.Gameplay
                             CharacterVelocity = new Vector3(CharacterVelocity.x, 0f, CharacterVelocity.z);
 
                             // then, add the jumpSpeed value upwards
-                            CharacterVelocity += Vector3.up * JumpForce;
+                            CharacterVelocity += Vector3.up * JumpForce * jumpForceModifier;
 
                             // play sound
                             AudioSource.PlayOneShot(JumpSfx);
@@ -412,7 +425,7 @@ namespace Unity.FPS.Gameplay
             // apply the final calculated velocity value as a character movement
             Vector3 capsuleBottomBeforeMove = GetCapsuleBottomHemisphere();
             Vector3 capsuleTopBeforeMove = GetCapsuleTopHemisphere(m_Controller.height);
-            m_Controller.Move(CharacterVelocity * Time.deltaTime);
+            m_Controller.Move(CharacterVelocity * Time.deltaTime * moveSpeedModifier);
 
             // detect obstructions to adjust velocity accordingly
             m_LatestImpactSpeed = Vector3.zero;
@@ -426,7 +439,14 @@ namespace Unity.FPS.Gameplay
                 CharacterVelocity = Vector3.ProjectOnPlane(CharacterVelocity, hit.normal);
             }
         }
-
+        public void ModifyMoveSpeed (float modifierChange)
+        {
+            moveSpeedModifier += modifierChange;
+        }
+        public void ModifyJumpForce(float modifierChange)
+        {
+            jumpForceModifier += modifierChange;
+        }
         // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller
         bool IsNormalUnderSlopeLimit(Vector3 normal)
         {

@@ -23,11 +23,18 @@ namespace Unity.FPS.Game
 
         bool m_IsDead;
 
+        [SerializeField]
+        private float maxHpModifier;
+
         void Start()
         {
             CurrentHealth = MaxHealth;
         }
-
+        public void ModifyMaxHp(float modifierChange)
+        {
+            maxHpModifier += modifierChange;
+            MaxHealth += maxHpModifier;
+        }
         public void Heal(float healAmount)
         {
             float healthBefore = CurrentHealth;

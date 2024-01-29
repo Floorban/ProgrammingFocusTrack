@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2419484698514167825}
   - component: {fileID: 1380729931974177984}
   - component: {fileID: 8816428649217400559}
-  - component: {fileID: 8785011328786165067}
+  - component: {fileID: -8187520709917463259}
   m_Layer: 5
   m_Name: maxHpBuff
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8785011328786165067}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeButton, fps.Gameplay
         m_MethodName: OnClicked
         m_Mode: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8785011328786165067
+--- !u!114 &-8187520709917463259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe04e8d2f9d62d429c360bcfe4b640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpEffect: {fileID: 11400000, guid: 03aa7cab6e7f4a8448a59d1085d45d95, type: 2}
-  weaponPowerupEffect: {fileID: 0}
   upgradePanelManager: {fileID: 0}
   player: {fileID: 0}
+  playerController: {fileID: 0}
   weapon: {fileID: 0}
-  isWeapon: 0
-  isPlayer: 0
+  weaponController: {fileID: 0}
+  health: {fileID: 0}
+  button: {fileID: 0}
+  amount: 10
+  buttonID: 3
+  intAmount: 0

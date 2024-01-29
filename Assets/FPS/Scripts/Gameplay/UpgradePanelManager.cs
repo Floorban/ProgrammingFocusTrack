@@ -17,9 +17,9 @@ namespace Unity.FPS.UI
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Vector3 position = new Vector3( 710f, 450f, 0);
-            Vector3 position2 = new Vector3(810f, 450f, 0);
-            Vector3 position3 = new Vector3(910f, 450f, 0);
+            Vector3 position = new Vector3( 680f, 440f, 0);
+            Vector3 position2 = new Vector3(780f, 440f, 0);
+            Vector3 position3 = new Vector3(880f, 440f, 0);
             InstantiateLoot(position);
             InstantiateLoot(position2);
             InstantiateLoot(position3);
@@ -34,9 +34,10 @@ namespace Unity.FPS.UI
                 Destroy(lootObject);
             }
 
-            // Clear the list after destroying
             spawnedLootObjects.Clear();
-            Debug.Log("sad");
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        
         }
         Loot GetDroppedItem()
         {
