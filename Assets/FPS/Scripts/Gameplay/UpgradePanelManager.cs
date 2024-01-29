@@ -6,10 +6,9 @@ namespace Unity.FPS.UI
 {
     public class UpgradePanelManager : MonoBehaviour
     {
-        [SerializeField] GameObject panel;
         public List<Loot> lootList = new List<Loot>();
-        public Transform canvas;
-
+        [SerializeField] private GameObject panel;
+        [SerializeField] private Transform canvas;
         private List<GameObject> spawnedLootObjects = new List<GameObject>();
         public void OpenPanel()
         {
@@ -33,11 +32,9 @@ namespace Unity.FPS.UI
             {
                 Destroy(lootObject);
             }
-
             spawnedLootObjects.Clear();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        
         }
         Loot GetDroppedItem()
         {

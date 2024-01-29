@@ -6,18 +6,15 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    public UpgradePanelManager upgradePanelManager;
-    public PlayerCharacterController playerController;
-    public GameObject weapon;
-    public WeaponController weaponController;
-    public Health health;
+    [SerializeField] private UpgradePanelManager upgradePanelManager;
+    [SerializeField] private PlayerCharacterController playerController;
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private WeaponController weaponController;
+    [SerializeField] private Health health;
 
-    [SerializeField]
-    private Button button;
-    [SerializeField]
-    private float amount;
-    [SerializeField]
-    private int buttonID, intAmount;
+    [SerializeField] private Button button;
+    [SerializeField] private float amount;
+    [SerializeField] private int buttonID, intAmount;
     private void Start()
     {
         upgradePanelManager = GetComponentInParent<UpgradePanelManager>();
