@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.FPS.UI;
+using System.Collections;
 
 namespace Unity.FPS.Gameplay
 {
@@ -149,6 +150,21 @@ namespace Unity.FPS.Gameplay
                 actorsManager.SetPlayer(gameObject);
             ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
         }
+        public float dashTime, dashLength, dashSpeed;
+        public void LesDash()
+        {
+            StartCoroutine(DashCorutine());
+        }
+        public IEnumerator DashCorutine()
+        {
+            float startTime = Time.time;
+            while (startTime + dashTime > Time.time)
+            {
+                Vector3 moveDirection = transform.forward * dashLength;
+                m_Controller.Move(moveDirection * Time.deltaTime * dashSpeed);
+                yield break;
+            }
+        }
 
         void Start()
         {
@@ -182,7 +198,7 @@ namespace Unity.FPS.Gameplay
         }
 
         void Update()
-        {
+        { 
             // check for Y kill
             if (!IsDead && transform.position.y < KillHeight)
             {
