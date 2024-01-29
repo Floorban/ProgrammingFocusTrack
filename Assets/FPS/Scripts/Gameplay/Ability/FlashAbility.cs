@@ -1,6 +1,5 @@
 using Unity.FPS.Game;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Unity.FPS.Gameplay
 {
@@ -10,7 +9,7 @@ namespace Unity.FPS.Gameplay
         [SerializeField] float flashVelocity;
         public override void Activate(GameObject player)
         {
-
+            Debug.Log("im 2");
         }
     }
 }
