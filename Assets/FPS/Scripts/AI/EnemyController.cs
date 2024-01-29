@@ -69,13 +69,6 @@ namespace Unity.FPS.AI
         [Tooltip("The point at which the death VFX is spawned")]
         public Transform DeathVfxSpawnPoint;
 
-        [Header("Loot")] [Tooltip("The object this enemy can drop when dying")]
-        //public GameObject LootPrefab;
-        public List<Loot> lootList = new List<Loot>();
-
-        [Tooltip("The chance the object has to drop")] [Range(0, 1)]
-        public float DropRate = 1f;
-
         [Header("Debug Display")] [Tooltip("Color of the sphere gizmo representing the path reaching range")]
         public Color PathReachingRangeColor = Color.yellow;
 
@@ -118,6 +111,14 @@ namespace Unity.FPS.AI
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
         NavigationModule m_NavigationModule;
+
+        [Header("Loot")]
+        [Tooltip("The object this enemy can drop when dying")]
+        [SerializeField] private List<Loot> lootList = new List<Loot>();
+
+        [Tooltip("The chance the object has to drop")]
+        [Range(0, 1)]
+        [SerializeField] private float dropRate = 1f;
 
         void Start()
         {
@@ -357,9 +358,6 @@ namespace Unity.FPS.AI
                 m_WasDamagedThisFrame = true;
             }
         }
-
-        [SerializeField]
-        private int expAmount = 10;
         void OnDie()
         {
             // spawn a particle system when dying
@@ -372,16 +370,22 @@ namespace Unity.FPS.AI
             // loot an object
             if (TryDropItem())
             {
-                //Instantiate(LootPrefab, transform.position, Quaternion.identity);
                 InstantiateLoot(transform.position);
             }
-
-            //ExperienceManager.instance.IncreaseExperience(expAmount);
 
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
         }
-        Loot GetDroppedItem()
+        private bool TryDropItem()
+        {
+            if (dropRate == 0 || lootList == null)
+                return false;
+            else if (dropRate == 1)
+                return true;
+            else
+                return (Random.value <= dropRate);
+        }
+        private Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
             List<Loot> possibleItems = new List<Loot>();
@@ -399,7 +403,7 @@ namespace Unity.FPS.AI
             }
             return null;
         }
-        public void InstantiateLoot(Vector3 spawnPosition)
+        private void InstantiateLoot(Vector3 spawnPosition)
         {
             Loot droppedItem = GetDroppedItem();
             if (droppedItem != null && droppedItem.lootPrefab != null)
@@ -460,17 +464,6 @@ namespace Unity.FPS.AI
             }
 
             return didFire;
-        }
-
-        public bool TryDropItem()
-        {
-            //  if (DropRate == 0 || LootPrefab == null)
-            if (DropRate == 0 || lootList == null)
-                return false;
-            else if (DropRate == 1)
-                return true;
-            else
-                return (Random.value <= DropRate);
         }
 
         void FindAndInitializeAllWeapons()

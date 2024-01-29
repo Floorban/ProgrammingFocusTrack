@@ -7,7 +7,7 @@ namespace Unity.FPS.UI
 {
     public class UpgradePanelManager : MonoBehaviour
     {
-        public List<Loot> lootList = new List<Loot>();
+        [SerializeField] private List<Loot> lootList = new List<Loot>();
         [SerializeField] private GameObject panel;
         [SerializeField] private Transform canvas;
         [SerializeField] private List<GameObject> spawnedLootObjects = new List<GameObject>();
@@ -21,12 +21,11 @@ namespace Unity.FPS.UI
             /*Vector3 position = new Vector3(680f, 440f, 0);
             Vector3 position2 = new Vector3(780f, 440f, 0);
             Vector3 position3 = new Vector3(880f, 440f, 0);
-
             InstantiateButton(position);
             InstantiateButton(position2);
             InstantiateButton(position3);*/
 
-            InstantiateButton(canvas.transform, 3);
+            InstantiateButtons(canvas.transform, 3);
         }
         public void ClosePanel()
         {
@@ -40,7 +39,7 @@ namespace Unity.FPS.UI
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        Loot GetDroppedItem()
+        private Loot GetDroppedItem()
         {
             int randomNumber = Random.Range(1, 101);
             List<Loot> possibleItems = new List<Loot>();
@@ -59,7 +58,7 @@ namespace Unity.FPS.UI
             return null;
         }
 
-        public void InstantiateButton(Transform parentTransform, int numberOfButtons)
+        public void InstantiateButtons(Transform parentTransform, int numberOfButtons)
         {
             for (int i = 0; i < numberOfButtons; i++)
             {

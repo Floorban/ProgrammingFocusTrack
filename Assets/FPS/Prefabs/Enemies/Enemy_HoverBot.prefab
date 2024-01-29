@@ -153,14 +153,13 @@ MonoBehaviour:
   DeathVfx: {fileID: 8950624839484268180, guid: 2a8f5052fe50f7b41b17149abb0f7414,
     type: 3}
   DeathVfxSpawnPoint: {fileID: 381893446485871685}
-  lootList:
-  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
-  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
-  DropRate: 1
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   DetectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
-  expAmount: 10
+  lootList:
+  - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
+  - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
+  dropRate: 1
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CriticalHealthRatio: 0.3
+  maxHpModifier: 0
 --- !u!114 &3464315327790461765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +797,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 8924682559891268397, guid: ec753d54f333bb944b8b04884ad63828,
     type: 3}
   DelayBetweenShots: 2
+  attackSpeedModifier: 1
   BulletSpreadAngle: 1
   BulletsPerShot: 1
   RecoilForce: 1
@@ -810,8 +811,11 @@ MonoBehaviour:
   ShellCasingEjectionForce: 2
   ShellPoolSize: 1
   AmmoReloadRate: 0.5
+  reloadSpeedModifier: 1
   AmmoReloadDelay: 0.5
+  reloadDelayModifier: 1
   MaxAmmo: 100
+  ammoCapacityModifier: 1
   AutomaticReleaseOnCharged: 0
   MaxChargeDuration: 2
   AmmoUsedOnStartCharge: 1
