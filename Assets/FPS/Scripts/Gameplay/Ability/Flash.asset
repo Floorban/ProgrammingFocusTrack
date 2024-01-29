@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Flash
   m_EditorClassIdentifier: 
   abilityName: Flash
-  activeTime: 0.3
+  activeTime: 2
   cooldownTime: 1
-  flashVelocity: 10
+  flashVelocity: 50

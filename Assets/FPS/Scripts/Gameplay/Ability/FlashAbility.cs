@@ -9,7 +9,9 @@ namespace Unity.FPS.Gameplay
         [SerializeField] float flashVelocity;
         public override void Activate(GameObject player)
         {
-            Debug.Log("im 2");
+            PlayerCharacterController playerController = player.GetComponent<PlayerCharacterController>();
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            rb.velocity = flashVelocity * playerController.CharacterVelocity.normalized;
         }
     }
 }
