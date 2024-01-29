@@ -6217,29 +6217,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2729281214124946789}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1593854605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1315839542190839943, guid: c996b53e9f849234393d1e90f68d1679,
-    type: 3}
-  m_PrefabInstance: {fileID: 4008933581619590512}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1593854616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593854605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f431db6a93d2b4992f7649d9a0a629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airDropPrefabs: {fileID: 6359261015209649708, guid: 65badfd2df1bea2409e3f6c44ab858e4,
-    type: 3}
-  spawnArea: {x: 10, y: 0, z: 10}
-  spawnTimer: 10
-  timer: 0
 --- !u!1 &1603278495
 GameObject:
   m_ObjectHideFlags: 0
@@ -10564,7 +10541,7 @@ PrefabInstance:
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
@@ -11021,10 +10998,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1315839542190839943, guid: c996b53e9f849234393d1e90f68d1679,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1593854616}
     - targetCorrespondingSourceObject: {fileID: 1567544279954943049, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       insertIndex: -1

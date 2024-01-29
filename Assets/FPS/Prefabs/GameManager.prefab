@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 4160549848294572208}
   - component: {fileID: 1615079986}
   - component: {fileID: 6895327427570354697}
+  - component: {fileID: 2072763763840515082}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Untagged
@@ -486,6 +487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888c7d8f8f69c6b42a086589b6f01bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefabs: {fileID: 0}
+  spawnArea: {x: 0, y: 0, z: 0}
+  spawnTimer: 0
+  timer: 0
+  playerTransform: {fileID: 0}
 --- !u!114 &556685733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +655,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SwitchOrder: 0
   Replacements: []
+--- !u!114 &2072763763840515082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315839542190839943}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f431db6a93d2b4992f7649d9a0a629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airDropPrefabs: {fileID: 6359261015209649708, guid: 65badfd2df1bea2409e3f6c44ab858e4,
+    type: 3}
+  spawnArea: {x: 10, y: 0, z: 10}
+  spawnTimer: 10
+  timer: 0
 --- !u!1 &1495142052202150820
 GameObject:
   m_ObjectHideFlags: 0

@@ -150,6 +150,17 @@ namespace Unity.FPS.Gameplay
             ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
         }
 
+        public float flashDistance;
+        public void Flash()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("faa");
+                Vector3 forwardDirection = transform.forward;
+                Vector3 newPosition = transform.position + forwardDirection * flashDistance;
+                transform.position += newPosition;
+            }
+        }
         void Start()
         {
             
@@ -183,6 +194,7 @@ namespace Unity.FPS.Gameplay
 
         void Update()
         {
+            Flash();
             // check for Y kill
             if (!IsDead && transform.position.y < KillHeight)
             {
