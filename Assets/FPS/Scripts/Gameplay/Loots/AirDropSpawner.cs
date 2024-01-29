@@ -4,8 +4,8 @@ public class AirDropSpawner : MonoBehaviour
 {
     [SerializeField] GameObject airDropPrefabs;
     [SerializeField] Vector3 spawnArea;
-    [SerializeField] float spawnTimer;
-    private float timer;
+    [SerializeField] float spawnTimer, timer;
+
     void Update()
     {
         timer -= Time.deltaTime;
