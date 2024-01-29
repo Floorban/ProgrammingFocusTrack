@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e789053687edf4e4ea57d62d3021e744, type: 3}
-  m_Name: Flash
+  m_Script: {fileID: 11500000, guid: f68dfac3c1343f446bed01bdfedbed8c, type: 3}
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  abilityName: Flash
-  activeTime: 1
+  abilityName: Heal
+  activeTime: 0.1
   cooldownTime: 1
-  flashDistance: 10
+  healAmount: 10

@@ -7,12 +7,10 @@ namespace Unity.FPS.Gameplay
     [CreateAssetMenu(menuName = "Abilities/Flash")]
     public class FlashAbility : Ability
     {
-        [SerializeField] float flashDistance;
+        [SerializeField] float flashVelocity;
         public override void Activate(GameObject player)
         {
-            PlayerCharacterController playerController = player.GetComponent<PlayerCharacterController>();
-            playerController.flashDistance = flashDistance;
-            //playerController.Flash();
+
         }
     }
 }
