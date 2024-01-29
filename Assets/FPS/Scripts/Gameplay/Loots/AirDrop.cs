@@ -37,7 +37,7 @@ namespace Unity.FPS.Gameplay
 
         private void Update()
         {
-            canOpen = playerCharacterController.OpenCounter >= 1; 
+            canOpen = playerCharacterController.openCounter >= 1; 
             if (isOpen && isPickup)
             {
                 Destroy(gameObject);
@@ -80,7 +80,7 @@ namespace Unity.FPS.Gameplay
                 Vector3 position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
                 InstantiateLoot(position);
 
-                playerCharacterController.OpenCounter--;
+                playerCharacterController.openCounter--;
                 isOpen = true;
             }
             else

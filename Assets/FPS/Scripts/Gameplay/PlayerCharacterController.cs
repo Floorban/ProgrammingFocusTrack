@@ -134,14 +134,18 @@ namespace Unity.FPS.Gameplay
         const float k_JumpGroundingPreventionTime = 0.2f;
         const float k_GroundCheckDistanceInAir = 0.07f;
 
-        [SerializeField]
-        private float moveSpeedModifier, jumpForceModifier;
+        [SerializeField] private UpgradePanelManager levelUpManager;
+        public float currentExperience, maxExperience;
+        public int currentLevel, openCounter;
+
+        [SerializeField] private float moveSpeedModifier, jumpForceModifier;
         public float dmg;
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
             if (actorsManager != null)
                 actorsManager.SetPlayer(gameObject);
+            ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
         }
 
         void Start()
@@ -230,49 +234,50 @@ namespace Unity.FPS.Gameplay
         {
             dmg += modifierChange;
         }
-
-        private void OnEnable()
+        public void ModifyMoveSpeed(float modifierChange)
         {
-            ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
+            moveSpeedModifier += modifierChange;
         }
-        private void OnDisable()
+        public void ModifyJumpForce(float modifierChange)
         {
-            ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
+            jumpForceModifier += modifierChange;
         }
+        /*private void OnEnable()
+         {
+             ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
+         }
+         private void OnDisable()
+         {
+             ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
+         }*/
 
-        [SerializeField]
-        public float CurrentExperience, MaxExperience;
-        [SerializeField]
-        public int CurrentLevel, OpenCounter;
-        [SerializeField]
-        public UpgradePanelManager levelUpManager;
-
-        void HandleExperienceChange(int newExpAmount)
+        private void HandleExperienceChange(int newExpAmount)
         {
-            CurrentExperience += newExpAmount;
-            Debug.Log($"Get Exp! || Current Exp: {CurrentExperience} || Max Exp: {MaxExperience}");
+            currentExperience += newExpAmount;
+            Debug.Log($"Get Exp! || Current Exp: {currentExperience} || Max Exp: {maxExperience}");
 
-            if (CurrentExperience >= MaxExperience)
+            if (currentExperience >= maxExperience)
             {
                 Debug.Log("Level Up!");
                 LevelUp();
             }
 
         }
-        void LevelUp()
+        private void LevelUp()
         {
-            CurrentLevel++;
-            OpenCounter++;
+            currentLevel++;
+            openCounter++;
 
-            MaxExperience += 3;
-            CurrentExperience = 0;
-            Debug.Log($"Current Level: {CurrentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
+            maxExperience += 5;
+            currentExperience = 0;
+            Debug.Log($"Current Level: {currentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
 
             levelUpManager.OpenPanel();
         }
         void OnDie()
         {
             IsDead = true;
+            ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
 
             // Tell the weapons manager to switch to a non-existing weapon in order to lower the weapon
             m_WeaponsManager.SwitchToWeaponIndex(-1, true);
@@ -439,14 +444,7 @@ namespace Unity.FPS.Gameplay
                 CharacterVelocity = Vector3.ProjectOnPlane(CharacterVelocity, hit.normal);
             }
         }
-        public void ModifyMoveSpeed (float modifierChange)
-        {
-            moveSpeedModifier += modifierChange;
-        }
-        public void ModifyJumpForce(float modifierChange)
-        {
-            jumpForceModifier += modifierChange;
-        }
+
         // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller
         bool IsNormalUnderSlopeLimit(Vector3 normal)
         {
