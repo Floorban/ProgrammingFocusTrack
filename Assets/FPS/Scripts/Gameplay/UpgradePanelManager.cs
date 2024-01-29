@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.FPS.Gameplay;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace Unity.FPS.UI
 {
@@ -9,20 +10,23 @@ namespace Unity.FPS.UI
         public List<Loot> lootList = new List<Loot>();
         [SerializeField] private GameObject panel;
         [SerializeField] private Transform canvas;
-        private List<GameObject> spawnedLootObjects = new List<GameObject>();
+        [SerializeField] private List<GameObject> spawnedLootObjects = new List<GameObject>();
         public void OpenPanel()
         {
             Time.timeScale = 0f;
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Vector3 position = new Vector3( 680f, 440f, 0);
+
+            /*Vector3 position = new Vector3(680f, 440f, 0);
             Vector3 position2 = new Vector3(780f, 440f, 0);
             Vector3 position3 = new Vector3(880f, 440f, 0);
-            InstantiateLoot(position);
-            InstantiateLoot(position2);
-            InstantiateLoot(position3);
 
+            InstantiateButton(position);
+            InstantiateButton(position2);
+            InstantiateButton(position3);*/
+
+            InstantiateButton(canvas.transform, 3);
         }
         public void ClosePanel()
         {
@@ -54,16 +58,18 @@ namespace Unity.FPS.UI
             }
             return null;
         }
-        public void InstantiateLoot(Vector3 spawnPosition)
+
+        public void InstantiateButton(Transform parentTransform, int numberOfButtons)
         {
-            Loot droppedItem = GetDroppedItem();
-            if (droppedItem != null && droppedItem.lootPrefab != null)
+            for (int i = 0; i < numberOfButtons; i++)
             {
-                GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
-                lootGameObject.transform.parent = canvas.transform;
-
-                spawnedLootObjects.Add(lootGameObject);
-
+                Loot droppedItem = GetDroppedItem();
+                if (droppedItem != null && droppedItem.lootPrefab != null)
+                {
+                    GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, parentTransform);
+                    lootGameObject.transform.parent = canvas.transform;
+                    spawnedLootObjects.Add(lootGameObject);
+                }
             }
         }
     }
