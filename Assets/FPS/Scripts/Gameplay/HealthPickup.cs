@@ -1,22 +1,20 @@
 ﻿using Unity.FPS.Game;
+using UnityEngine;
 
 namespace Unity.FPS.Gameplay
 {
     public class HealthPickup : Pickup
     {
-        //[Header("Parameters")] [Tooltip("Amount of health to heal on pickup")]
-        //public float HealAmount;
+        [Header("Parameters")] [Tooltip("Amount of health to heal on pickup")]
+        [SerializeField] float healAmount;
 
-        public PowerUpEffect powerUpEffect;
         protected override void OnPicked(PlayerCharacterController player)
         {
             Health playerHealth = player.GetComponent<Health>();
             if (playerHealth && playerHealth.CanPickup())
             {
-                //playerHealth.Heal(HealAmount);
-                powerUpEffect.Apply(player.gameObject);
+                playerHealth.Heal(healAmount);
                 //PlayPickupFeedback();
-                //Destroy(gameObject);
             }
             base.OnPicked(player);
             Destroy(gameObject);

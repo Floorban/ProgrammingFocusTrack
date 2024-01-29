@@ -254,7 +254,7 @@ namespace Unity.FPS.Gameplay
              ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
          }*/
 
-        void HandleExperienceChange(int newExpAmount)
+        public void HandleExperienceChange(float newExpAmount)
         {
             currentExperience += newExpAmount;
             Debug.Log($"Get Exp! || Current Exp: {currentExperience} || Max Exp: {maxExperience}");
