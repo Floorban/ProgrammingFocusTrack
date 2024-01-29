@@ -3,7 +3,7 @@ using UnityEngine;
     {
         public static ExperienceManager instance;
 
-        public delegate void ExperienceChangeHandler(int amount);
+        public delegate void ExperienceChangeHandler(float amount);
         public event ExperienceChangeHandler OnExperienceChange;
 
         private void Awake()
@@ -18,7 +18,7 @@ using UnityEngine;
             }
         }
 
-        public void IncreaseExperience(int amount)
+        public void IncreaseExperience(float amount)
         {
             OnExperienceChange?.Invoke(amount);
         }

@@ -101,8 +101,7 @@ MonoBehaviour:
   PickupSfx: {fileID: 8300000, guid: 8dfdbc346713580429db9079ad1ff964, type: 3}
   PickupVfxPrefab: {fileID: 18133231791472539, guid: e44fc97440f45e946a0bdbdd460acfb9,
     type: 3}
-  isSlot: 0
-  powerUpEffect: {fileID: 11400000, guid: fb0a483c99f73f14d851ff76a35bef4f, type: 2}
+  expAmount: 2
 --- !u!1 &5812472355257108779
 GameObject:
   m_ObjectHideFlags: 0

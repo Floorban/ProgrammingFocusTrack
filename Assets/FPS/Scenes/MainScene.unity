@@ -6301,6 +6301,7 @@ MonoBehaviour:
     type: 3}
   spawnArea: {x: 10, y: 0, z: 10}
   spawnTimer: 10
+  timer: 0
 --- !u!1 &1603278495
 GameObject:
   m_ObjectHideFlags: 0
@@ -9278,19 +9279,19 @@ PrefabInstance:
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 29dbfc8f9eb98584db30b3e2fedb0849,
+      objectReference: {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc,
         type: 2}
     - target: {fileID: 9087143436424816424, guid: 25a1b0efadb966e44889fce712c8ff8d,
         type: 3}
       propertyPath: lootList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 0eb32548dcf51504dbd1292c88c92350,
+      objectReference: {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
