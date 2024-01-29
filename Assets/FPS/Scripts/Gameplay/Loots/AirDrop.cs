@@ -37,7 +37,7 @@ namespace Unity.FPS.Gameplay
 
         private void Update()
         {
-            canOpen = playerCharacterController.OpenCounter >= 1; //&& playerCharacterController.CoinCounter >= 1
+            canOpen = playerCharacterController.OpenCounter >= 1; 
             if (isOpen && isPickup)
             {
                 Destroy(gameObject);
