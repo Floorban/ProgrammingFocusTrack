@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 4205022973215787166}
   - component: {fileID: 1272397862697293493}
   - component: {fileID: 1661717823}
+  - component: {fileID: 5394996653055445891}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -477,9 +478,14 @@ MonoBehaviour:
   MaxSpeedForFallDamage: 30
   FallDamageAtMinSpeed: 10
   FallDamageAtMaxSpeed: 50
-  CurrentExperience: 0
-  MaxExperience: 10
-  CurrentLevel: 0
+  levelUpManager: {fileID: 0}
+  currentExperience: 0
+  maxExperience: 0
+  currentLevel: 0
+  openCounter: 0
+  moveSpeedModifier: 0
+  jumpForceModifier: 0
+  dmg: 0
 --- !u!114 &1360575517897679518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CriticalHealthRatio: 0.3
+  maxHpModifier: 0
 --- !u!114 &298744117520805562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +806,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5394996653055445891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253983127304857660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe2a3c319b70f64fae89148ed1add56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 39f9f9c9a8f4a104b8092577e1708e6b, type: 2}
+  - {fileID: 11400000, guid: 78e963c5eabdd3c43981bd1a037f1f28, type: 2}
+  - {fileID: 11400000, guid: 957b87bf2eecea04f94345cca873193c, type: 2}
+  abilityKeys: 1a0100001b0100001c010000
 --- !u!1 &7383874627095517793
 GameObject:
   m_ObjectHideFlags: 0

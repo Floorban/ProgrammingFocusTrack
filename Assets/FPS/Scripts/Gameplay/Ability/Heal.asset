@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Heal
   activeTime: 0.1
-  cooldownTime: 1
+  cooldownTime: 5
   healAmount: 10

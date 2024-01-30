@@ -6,7 +6,8 @@ namespace Unity.FPS.Gameplay
     public class AbilityManager : MonoBehaviour
     {
         public Ability[] abilities;
-        float activeTime, cooldownTime;
+        [SerializeField] float[] activeTimes;
+        [SerializeField] float[] cooldownTimes;
         [SerializeField] KeyCode[] abilityKeys;
         enum State
         {
@@ -14,40 +15,47 @@ namespace Unity.FPS.Gameplay
             activated,
             cooldown
         }
-        State state = State.ready;
+        //State state = State.ready;
+        [SerializeField] State[] states;
+        void Start()
+        {
+            activeTimes = new float[abilities.Length];
+            cooldownTimes = new float[abilities.Length];
+            states = new State[abilities.Length];
+        }
         void Update()
         {
             for (int i = 0; i < abilities.Length; i++)
             {
-                switch (state)
+                switch (states[i])
                 {
                     case State.ready:
                         if (Input.GetKeyDown(abilityKeys[i]))
                         {
                             abilities[i].Activate(gameObject);
-                            state = State.activated;
-                            activeTime = abilities[i].activeTime;
+                            states[i] = State.activated;
+                            activeTimes[i] = abilities[i].activeTime;
                         }
                         break;
                     case State.activated:
-                        if (activeTime > 0)
+                        if (activeTimes[i] > 0)
                         {
-                            activeTime -= Time.deltaTime;
+                            activeTimes[i] -= Time.deltaTime;
                         }
                         else
                         {
-                            state = State.cooldown;
-                            cooldownTime = abilities[i].cooldownTime;
+                            states[i] = State.cooldown;
+                            cooldownTimes[i] = abilities[i].cooldownTime;
                         }
                         break;
                     case State.cooldown:
-                        if (cooldownTime > 0)
+                        if (cooldownTimes[i] > 0)
                         {
-                            cooldownTime -= Time.deltaTime;
+                            cooldownTimes[i] -= Time.deltaTime;
                         }
                         else
                         {
-                            state = State.ready;
+                            states[i] = State.ready;
                         }
                         break;
                 }
