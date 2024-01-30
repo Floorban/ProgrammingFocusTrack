@@ -15,7 +15,7 @@ namespace Unity.FPS.Gameplay
 
         internal void OnTriggerEnter()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [Tooltip("Audio source for footsteps, jump, etc...")]
@@ -166,8 +166,7 @@ namespace Unity.FPS.Gameplay
 
             foreach (Collider col in colliders)
             {
-                Debug.Log("Collider Name: " + col.gameObject.name);
-                Debug.Log("Collider Tag: " + col.gameObject.tag);
+                col.gameObject.GetComponent<Actor>().Affiliation = 1;
             }
         }
 
