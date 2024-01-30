@@ -9,7 +9,8 @@ namespace Unity.FPS.Gameplay
         [SerializeField] float radius;
         public override void Activate(GameObject player)
         {
-            Debug.Log("333");
+            PlayerCharacterController playerController = player.GetComponent<PlayerCharacterController>();
+            playerController.Cast();
         }
     }
 

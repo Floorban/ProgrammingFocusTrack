@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Unity.FPS.UI;
 using System.Collections;
+using System;
 
 namespace Unity.FPS.Gameplay
 {
@@ -11,6 +12,11 @@ namespace Unity.FPS.Gameplay
     {
         [Header("References")] [Tooltip("Reference to the main camera used for the player")]
         public Camera PlayerCamera;
+
+        internal void OnTriggerEnter()
+        {
+            throw new NotImplementedException();
+        }
 
         [Tooltip("Audio source for footsteps, jump, etc...")]
         public AudioSource AudioSource;
@@ -141,8 +147,29 @@ namespace Unity.FPS.Gameplay
         public int currentLevel, openCounter;
 
         [Header("Power-up modifier")]
-        [SerializeField] float moveSpeedModifier, jumpForceModifier;
+        [SerializeField] float moveSpeedModifier;
+        [SerializeField] float jumpForceModifier;
         public float dmg;
+
+        [Header("SphereCast")]
+        RaycastHit hit;
+        public float radius, maxDistance;
+        public LayerMask layerMask;
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, radius);
+            Gizmos.DrawLine(transform.position, transform.position + transform.forward * radius);
+        }
+  
+        public void Cast()
+        {
+            if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, maxDistance, layerMask))
+            {
+                Debug.Log(hit.collider.gameObject);
+            }
+        }
+
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
@@ -264,7 +291,6 @@ namespace Unity.FPS.Gameplay
                 Debug.Log("Level Up!");
                 LevelUp();
             }
-
         }
         void LevelUp()
         {

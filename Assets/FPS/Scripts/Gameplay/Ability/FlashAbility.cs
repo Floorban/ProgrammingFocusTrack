@@ -10,10 +10,10 @@ namespace Unity.FPS.Gameplay
         [SerializeField] float flashDistance, flashSpeed;
         public override void Activate(GameObject player)
         {
-            CharacterController playerController = player.GetComponent<CharacterController>();
+            CharacterController characterController = player.GetComponent<CharacterController>();
 
             Vector3 moveDirection = player.transform.forward * flashDistance;
-            playerController.Move(moveDirection * Time.deltaTime * flashSpeed);
+            characterController.Move(moveDirection * Time.deltaTime * flashSpeed);
         }
     }
 }
