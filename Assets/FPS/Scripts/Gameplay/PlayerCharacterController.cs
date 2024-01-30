@@ -149,30 +149,6 @@ namespace Unity.FPS.Gameplay
         [SerializeField] float moveSpeedModifier, jumpForceModifier;
         public float dmg;
 
-        [Header("SphereCast")]
-        RaycastHit hit;
-        public float radius;
-        public LayerMask layerMask;
-        public UnityAction onFreeze;
-        void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, radius);
-        }
-        public void Cast()
-        {
-            Debug.Log("okok");
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
-
-            foreach (Collider col in colliders)
-            {
-                //col.gameObject.GetComponent<Actor>().Affiliation = 1;
-                col.gameObject.GetComponentInChildren<Animator>().SetFloat("MoveSpeed", 0f);
-                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);
-                EventManager.Broadcast(new FreezeEnemyEvent());
-            }
-        }
-
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();

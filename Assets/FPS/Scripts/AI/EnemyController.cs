@@ -203,20 +203,22 @@ namespace Unity.FPS.AI
 
             EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
         }
-
-        public bool isFrozen;
+        [Header("SphereCast")]
+        RaycastHit hit;
+        public float radius;
+        public LayerMask layerMask;
         void OnFreezeMessageEvent(FreezeEnemyEvent evt)
         {
-            BodyMaterial.color = Color.blue;
-            isFrozen = true;
-            m_NavigationModule.MoveSpeed = 0f;
-            gameObject.GetComponentInChildren<Animator>().enabled = false;
+            Physics.OverlapSphere(transform.position, radius, layerMask);
+            if (hit.collider.gameObject.tag == ("Player"))
+            {
+                OnDie();
+            }
             Debug.Log("im frozen");
         }
 
         void Update()
         {
-            if (isFrozen) return;
                 EnsureIsWithinLevelBounds();
 
                 DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
