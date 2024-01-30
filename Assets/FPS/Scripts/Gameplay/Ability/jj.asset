@@ -16,3 +16,8 @@ MonoBehaviour:
   activeTime: 0.1
   cooldownTime: 1
   freezingTime: 3
+  radius: 5
+  maxDistance: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8

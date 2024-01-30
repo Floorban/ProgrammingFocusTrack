@@ -40,6 +40,7 @@ namespace Unity.FPS.AI
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
         public Freeze freeze;
+        bool startCounting;
         [SerializeField] float freezingtimer;
 
         void Start()
@@ -64,6 +65,11 @@ namespace Unity.FPS.AI
             m_AudioSource.Play();
 
             EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+            freeze.onFreeze += OnFreeze;
+        }
+        public void OnFreeze()
+        {
+            AiState = AIState.Frozen;
         }
         void Update()
         {
@@ -121,7 +127,6 @@ namespace Unity.FPS.AI
                     break;
             }
         }
-        bool startCounting;
         void UpdateCurrentAiState()
         {
             // Handle logic 
