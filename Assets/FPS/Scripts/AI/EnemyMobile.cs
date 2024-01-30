@@ -183,12 +183,6 @@ namespace Unity.FPS.AI
             {
                 AiState = AIState.Follow;
             }
-
-            for (int i = 0; i < OnDetectVfx.Length; i++)
-            {
-                OnDetectVfx[i].Play();
-            }
-
             if (OnDetectSfx)
             {
                 AudioUtility.CreateSFX(OnDetectSfx, transform.position, AudioUtility.AudioGroups.EnemyDetection, 1f);
