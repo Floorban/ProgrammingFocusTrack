@@ -11,7 +11,7 @@ namespace Unity.FPS.UI
         public Image ExpFillImage;
 
         PlayerCharacterController m_PlayerController;
-        //private float lerpSpeed;
+        private float lerpSpeed;
 
         void Start()
         {
@@ -27,8 +27,8 @@ namespace Unity.FPS.UI
 
         void Update()
         {
-            //lerpSpeed = 3f * Time.deltaTime;
-            //ExpFillImage.fillAmount = Mathf.Lerp(ExpFillImage.fillAmount, m_PlayerController.CurrentExperience / m_PlayerController.MaxExperience, lerpSpeed);
+            //lerpSpeed = 10f * Time.deltaTime;
+            //ExpFillImage.fillAmount = Mathf.Lerp(ExpFillImage.fillAmount, m_PlayerController.currentExperience / m_PlayerController.maxExperience, lerpSpeed);
 
             ExpFillImage.fillAmount = m_PlayerController.currentExperience / m_PlayerController.maxExperience;
         }

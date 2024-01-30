@@ -202,8 +202,7 @@ namespace Unity.FPS.AI
                     m_EyeRendererData.MaterialIndex);
             }
 
-            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
-            freeze = FindObjectOfType<Freeze>();
+            //EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
         }
 
         [SerializeField] Freeze freeze;
@@ -235,7 +234,7 @@ namespace Unity.FPS.AI
                 }
 
                 m_WasDamagedThisFrame = false;
-                freeze.onFreeze += OnDie;
+              
         }
         void EnsureIsWithinLevelBounds()
         {
@@ -246,7 +245,10 @@ namespace Unity.FPS.AI
                 return;
             }
         }
-
+        public void Sub()
+        {
+            freeze.onFreeze += OnDie;
+        }
         void OnLostTarget()
         {
             onLostTarget.Invoke();

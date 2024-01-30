@@ -14,7 +14,7 @@ namespace Unity.FPS.Gameplay
 
         internal void OnTriggerEnter()
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         [Tooltip("Audio source for footsteps, jump, etc...")]
@@ -265,6 +265,7 @@ namespace Unity.FPS.Gameplay
 
             if (currentExperience >= maxExperience)
             {
+                currentExperience = 0;
                 Debug.Log("Level Up!");
                 LevelUp();
             }
@@ -275,7 +276,6 @@ namespace Unity.FPS.Gameplay
             openCounter++;
 
             maxExperience += 5;
-            currentExperience = 0;
             Debug.Log($"Current Level: {currentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
 
             levelUpManager.OpenPanel();
