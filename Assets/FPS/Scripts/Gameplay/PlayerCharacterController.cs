@@ -147,25 +147,27 @@ namespace Unity.FPS.Gameplay
         public int currentLevel, openCounter;
 
         [Header("Power-up modifier")]
-        [SerializeField] float moveSpeedModifier;
-        [SerializeField] float jumpForceModifier;
+        [SerializeField] float moveSpeedModifier, jumpForceModifier;
         public float dmg;
 
         [Header("SphereCast")]
         RaycastHit hit;
-        public float radius, maxDistance;
+        public float radius;
         public LayerMask layerMask;
         void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + transform.up * maxDistance, radius);
+            Gizmos.DrawWireSphere(transform.position, radius);
         }
-  
         public void Cast()
         {
-            if (Physics.SphereCast(transform.position, radius, transform.up, out hit, maxDistance, layerMask))
+            Debug.Log("okok");
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
+
+            foreach (Collider col in colliders)
             {
-                Debug.Log(hit.collider.gameObject);
+                Debug.Log("Collider Name: " + col.gameObject.name);
+                Debug.Log("Collider Tag: " + col.gameObject.tag);
             }
         }
 
@@ -209,10 +211,6 @@ namespace Unity.FPS.Gameplay
 
         void Update()
         { 
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Cast();
-            }
             // check for Y kill
             if (!IsDead && transform.position.y < KillHeight)
             {

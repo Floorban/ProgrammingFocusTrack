@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 797398738606809810}
   - component: {fileID: 1614318205656627459}
   - component: {fileID: 6758467749777907966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_HoverBot
   m_TagString: Enemies
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -387,7 +387,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2201913640410082181
 GameObject:

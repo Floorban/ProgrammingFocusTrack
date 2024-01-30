@@ -8528,7 +8528,7 @@ PrefabInstance:
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: radius
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -8548,7 +8548,7 @@ PrefabInstance:
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: maxDistance
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -8568,7 +8568,7 @@ PrefabInstance:
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: layerMask.m_Bits
-      value: 4294967295
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -10868,7 +10868,7 @@ PrefabInstance:
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839938, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
