@@ -1,15 +1,17 @@
 using Unity.FPS.Game;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unity.FPS.Gameplay
 {
     [CreateAssetMenu(menuName = "Abilities/Freeze")]
     public class Freeze : Ability
     {
-        [SerializeField] float radius;
+        public UnityAction onFreeze;
         public override void Activate(GameObject player)
         {
-            EventManager.Broadcast(new FreezeEnemyEvent());
+            //EventManager.Broadcast(new FreezeEnemyEvent());
+            onFreeze.Invoke();
         }
     }
 

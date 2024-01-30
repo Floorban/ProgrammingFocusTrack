@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -202,7 +203,10 @@ namespace Unity.FPS.AI
             }
 
             EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+            freeze = FindObjectOfType<Freeze>();
         }
+
+        [SerializeField] Freeze freeze;
         [Header("SphereCast")]
         RaycastHit hit;
         public float radius;
@@ -231,8 +235,8 @@ namespace Unity.FPS.AI
                 }
 
                 m_WasDamagedThisFrame = false;
+                freeze.onFreeze += OnDie;
         }
-
         void EnsureIsWithinLevelBounds()
         {
             // at every frame, this tests for conditions to kill the enemy

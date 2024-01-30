@@ -148,7 +148,6 @@ namespace Unity.FPS.Gameplay
         [Header("Power-up modifier")]
         [SerializeField] float moveSpeedModifier, jumpForceModifier;
         public float dmg;
-
         void Awake()
         {
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
@@ -158,7 +157,6 @@ namespace Unity.FPS.Gameplay
         }
         void Start()
         {
-            
             // fetch components on the same gameObject
             m_Controller = GetComponent<CharacterController>();
             DebugUtility.HandleErrorIfNullGetComponent<CharacterController, PlayerCharacterController>(m_Controller,

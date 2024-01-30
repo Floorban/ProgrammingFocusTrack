@@ -161,10 +161,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 81d8a1c2f6ebb1c448875da3b514c3cc, type: 2}
   - {fileID: 11400000, guid: e3dab4b2c8af4ec4bab73cd1784264ab, type: 2}
   dropRate: 1
-  radius: 5
+  playerController: {fileID: 0}
+  radius: 50
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
