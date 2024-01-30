@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6dfc4e4f65fce41b8c03818b4982b3, type: 3}
   m_Name: jj
   m_EditorClassIdentifier: 
-  abilityName: 
-  activeTime: 0
-  cooldownTime: 0
-  radius: 0
+  abilityName: Freeze
+  activeTime: 0.1
+  cooldownTime: 1
+  freezingTime: 3

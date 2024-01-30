@@ -14,7 +14,7 @@ namespace Unity.FPS.Gameplay
 
         internal void OnTriggerEnter()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [Tooltip("Audio source for footsteps, jump, etc...")]

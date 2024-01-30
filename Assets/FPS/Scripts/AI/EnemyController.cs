@@ -201,23 +201,12 @@ namespace Unity.FPS.AI
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
-
-            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
         }
 
-        [SerializeField] Freeze freeze;
-        [Header("SphereCast")]
-        RaycastHit hit;
-        public float radius;
-        public LayerMask layerMask;
-        void OnFreezeMessageEvent(FreezeEnemyEvent evt)
-        {
-            isFrozen = true;
-        }
         public bool isFrozen;
         void Update()
         {
-            if (!isFrozen) return;
+            if (isFrozen) return;
                 EnsureIsWithinLevelBounds();
 
                 DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);

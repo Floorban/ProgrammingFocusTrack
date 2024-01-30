@@ -8,6 +8,7 @@ namespace Unity.FPS.Gameplay
     public class Freeze : Ability
     {
         public UnityAction onFreeze;
+        public float freezingTime;
         public override void Activate(GameObject player)
         {
             EventManager.Broadcast(new FreezeEnemyEvent());

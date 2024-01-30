@@ -1,4 +1,5 @@
 ﻿using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 using UnityEngine;
 
 namespace Unity.FPS.AI
@@ -11,6 +12,7 @@ namespace Unity.FPS.AI
             Patrol,
             Follow,
             Attack,
+            Frozen
         }
 
         public Animator Animator;
@@ -37,6 +39,9 @@ namespace Unity.FPS.AI
         const string k_AnimAlertedParameter = "Alerted";
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
+        public Freeze freeze;
+        [SerializeField] float freezingtimer;
+
         void Start()
         {
             m_EnemyController = GetComponent<EnemyController>();
@@ -57,8 +62,9 @@ namespace Unity.FPS.AI
             DebugUtility.HandleErrorIfNullGetComponent<AudioSource, EnemyMobile>(m_AudioSource, this, gameObject);
             m_AudioSource.clip = MovementSound;
             m_AudioSource.Play();
-        }
 
+            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+        }
         void Update()
         {
             UpdateAiStateTransitions();
@@ -96,9 +102,26 @@ namespace Unity.FPS.AI
                     }
 
                     break;
+                case AIState.Frozen:
+                    if (freezingtimer >= freeze.freezingTime)
+                    {
+                        startCounting = false;
+                        Animator.speed = 1f;
+                        m_EnemyController.isFrozen = false;
+                        AiState = AIState.Patrol;
+                        if (m_EnemyController.IsSeeingTarget && m_EnemyController.IsTargetInAttackRange)
+                        {
+                            AiState = AIState.Attack;
+                            m_EnemyController.SetNavDestination(transform.position);
+                        }else
+                        {
+                            AiState = AIState.Patrol;
+                        }
+                    }
+                    break;
             }
         }
-
+        bool startCounting;
         void UpdateCurrentAiState()
         {
             // Handle logic 
@@ -128,9 +151,27 @@ namespace Unity.FPS.AI
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
                     m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
                     break;
+                case AIState.Frozen:
+                    // freeze the enemy
+                    m_EnemyController.NavMeshAgent.velocity = Vector3.zero;
+                    m_EnemyController.NavMeshAgent.angularSpeed = 0f;
+                    Animator.speed = 0f;
+                    m_EnemyController.isFrozen = true;
+                    startCounting = true;
+                    break;
+            }
+            if (startCounting)
+            {
+                freezingtimer += Time.deltaTime;
+            }else
+            {
+                freezingtimer = 0f;
             }
         }
-
+        void OnFreezeMessageEvent(FreezeEnemyEvent evt)
+        {
+            AiState = AIState.Frozen;
+        }
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);

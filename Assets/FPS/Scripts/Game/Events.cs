@@ -19,7 +19,10 @@ namespace Unity.FPS.Game
         public static FreezeEnemyEvent FreezeEnemyEvent = new FreezeEnemyEvent();
     }
 
-    public class FreezeEnemyEvent: GameEvent { }
+    public class FreezeEnemyEvent: GameEvent
+    {
+        public float freezingTime;
+    }
     public class ObjectiveUpdateEvent : GameEvent
     {
         public Objective Objective;
