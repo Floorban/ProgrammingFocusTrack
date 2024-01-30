@@ -1,4 +1,5 @@
 ﻿using Unity.FPS.Game;
+using Unity.FPS.AI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,12 @@ namespace Unity.FPS.UI
         [Tooltip("Whether the health bar is visible when at full health or not")]
         public bool HideFullHealthBar = true;
 
+        public int affiliation;
+        private void Start()
+        {
+            affiliation = this.gameObject.GetComponent<Actor>().Affiliation;
+        }
+
         void Update()
         {
             // update health bar value
@@ -28,6 +35,15 @@ namespace Unity.FPS.UI
             // hide health bar if needed
             if (HideFullHealthBar)
                 HealthBarPivot.gameObject.SetActive(HealthBarImage.fillAmount != 1);
+
+            if (affiliation == 1)
+            {
+                HealthBarImage.color = Color.blue;
+            }else
+            {
+                HealthBarImage.color = Color.red;
+            }
+                
         }
     }
 }
