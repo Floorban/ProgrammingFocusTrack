@@ -15,7 +15,6 @@ namespace Unity.FPS.Gameplay
             activated,
             cooldown
         }
-        //State state = State.ready;
         [SerializeField] State[] states;
         void Start()
         {
