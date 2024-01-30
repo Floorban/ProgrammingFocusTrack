@@ -204,25 +204,31 @@ namespace Unity.FPS.AI
             EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
         }
 
+        public bool isFrozen;
         void OnFreezeMessageEvent(FreezeEnemyEvent evt)
         {
+            BodyMaterial.color = Color.blue;
+            isFrozen = true;
+            m_NavigationModule.MoveSpeed = 0f;
+            gameObject.GetComponentInChildren<Animator>().enabled = false;
             Debug.Log("im frozen");
         }
 
         void Update()
         {
-            EnsureIsWithinLevelBounds();
+            if (isFrozen) return;
+                EnsureIsWithinLevelBounds();
 
-            DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
+                DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
 
-            Color currentColor = OnHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / FlashOnHitDuration);
-            m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", currentColor);
-            foreach (var data in m_BodyRenderers)
-            {
-                data.Renderer.SetPropertyBlock(m_BodyFlashMaterialPropertyBlock, data.MaterialIndex);
-            }
+                Color currentColor = OnHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / FlashOnHitDuration);
+                m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", currentColor);
+                foreach (var data in m_BodyRenderers)
+                {
+                    data.Renderer.SetPropertyBlock(m_BodyFlashMaterialPropertyBlock, data.MaterialIndex);
+                }
 
-            m_WasDamagedThisFrame = false;
+                m_WasDamagedThisFrame = false;
         }
 
         void EnsureIsWithinLevelBounds()

@@ -166,9 +166,9 @@ namespace Unity.FPS.Gameplay
 
             foreach (Collider col in colliders)
             {
-                /*col.gameObject.GetComponent<Actor>().Affiliation = 1;
+                //col.gameObject.GetComponent<Actor>().Affiliation = 1;
                 col.gameObject.GetComponentInChildren<Animator>().SetFloat("MoveSpeed", 0f);
-                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);*/
+                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);
                 EventManager.Broadcast(new FreezeEnemyEvent());
             }
         }
