@@ -10,8 +10,8 @@ namespace Unity.FPS.Gameplay
         public UnityAction onFreeze;
         public override void Activate(GameObject player)
         {
-            //EventManager.Broadcast(new FreezeEnemyEvent());
-            onFreeze.Invoke();
+            EventManager.Broadcast(new FreezeEnemyEvent());
+            //onFreeze.Invoke();
         }
     }
 

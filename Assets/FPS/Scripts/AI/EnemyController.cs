@@ -202,7 +202,7 @@ namespace Unity.FPS.AI
                     m_EyeRendererData.MaterialIndex);
             }
 
-            //EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
         }
 
         [SerializeField] Freeze freeze;
@@ -212,16 +212,12 @@ namespace Unity.FPS.AI
         public LayerMask layerMask;
         void OnFreezeMessageEvent(FreezeEnemyEvent evt)
         {
-            Physics.OverlapSphere(transform.position, radius, layerMask);
-            if (hit.collider.gameObject.tag == ("Player"))
-            {
-                OnDie();
-            }
-            Debug.Log("im frozen");
+            isFrozen = true;
         }
-
+        public bool isFrozen;
         void Update()
         {
+            if (!isFrozen) return;
                 EnsureIsWithinLevelBounds();
 
                 DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
@@ -234,8 +230,11 @@ namespace Unity.FPS.AI
                 }
 
                 m_WasDamagedThisFrame = false;
-              
         }
+        /*public void Sub()
+        {
+            freeze.onFreeze += OnDie;
+        }*/
         void EnsureIsWithinLevelBounds()
         {
             // at every frame, this tests for conditions to kill the enemy
@@ -244,10 +243,6 @@ namespace Unity.FPS.AI
                 Destroy(gameObject);
                 return;
             }
-        }
-        public void Sub()
-        {
-            freeze.onFreeze += OnDie;
         }
         void OnLostTarget()
         {
