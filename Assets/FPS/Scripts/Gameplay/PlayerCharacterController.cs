@@ -167,6 +167,7 @@ namespace Unity.FPS.Gameplay
             foreach (Collider col in colliders)
             {
                 col.gameObject.GetComponent<Actor>().Affiliation = 1;
+                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);
             }
         }
 
