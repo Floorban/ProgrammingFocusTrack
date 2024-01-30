@@ -23,9 +23,15 @@ namespace Unity.FPS.UI
             DebugUtility.HandleErrorIfNullFindObject<Jetpack, NotificationHUDManager>(jetpack, this);
             jetpack.OnUnlockJetpack += OnUnlockJetpack;
 
+            UpgradePanelManager upgradePanel = FindObjectOfType<UpgradePanelManager>();
+            upgradePanel.OnUnlockPowerUp += OnUnlockPowerUp;
+
             EventManager.AddListener<ObjectiveUpdateEvent>(OnObjectiveUpdateEvent);
         }
-
+        void OnUnlockPowerUp(string powerup)
+        {
+            CreateNotification(powerup);
+        }
         void OnObjectiveUpdateEvent(ObjectiveUpdateEvent evt)
         {
             if (!string.IsNullOrEmpty(evt.NotificationText))

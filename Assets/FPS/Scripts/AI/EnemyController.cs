@@ -200,6 +200,13 @@ namespace Unity.FPS.AI
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
+
+            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+        }
+
+        void OnFreezeMessageEvent(FreezeEnemyEvent evt)
+        {
+            Debug.Log("im frozen");
         }
 
         void Update()

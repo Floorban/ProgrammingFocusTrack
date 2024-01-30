@@ -1,9 +1,8 @@
 using UnityEngine;
-using Unity.FPS.Gameplay;
+using UnityEngine.Events;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
-namespace Unity.FPS.UI
+namespace Unity.FPS.Gameplay
 {
     public class UpgradePanelManager : MonoBehaviour
     {
@@ -11,6 +10,21 @@ namespace Unity.FPS.UI
         [SerializeField] GameObject panel;
         [SerializeField] Transform canvas;
         [SerializeField] List<GameObject> spawnedLootObjects = new List<GameObject>();
+
+        public UnityAction<string> OnUnlockPowerUp;
+        [SerializeField] string[] powerUpNames;
+        private void Start()
+        {
+            powerUpNames = new string[8];
+            powerUpNames[0] = "MoveSpeed++";
+            powerUpNames[1] = "JumpHeight++";
+            powerUpNames[2] = "Damage++";
+            powerUpNames[3] = "MaxHp++";
+            powerUpNames[4] = "AttackSpeed++";
+            powerUpNames[5] = "ReloadSpeed++";
+            powerUpNames[6] = "ReloadDelay--";
+            powerUpNames[7] = "AmmoCapacity++";
+        }
         public void OpenPanel()
         {
             Time.timeScale = 0f;
@@ -27,10 +41,11 @@ namespace Unity.FPS.UI
 
             InstantiateButtons(canvas.transform, 3);
         }
-        public void ClosePanel()
+        public void ClosePanel(int buttonID)
         {
             Time.timeScale = 1f;
             panel.SetActive(false);
+            OnUnlockPowerUp.Invoke(powerUpNames[buttonID]);
             foreach (GameObject lootObject in spawnedLootObjects)
             {
                 Destroy(lootObject);

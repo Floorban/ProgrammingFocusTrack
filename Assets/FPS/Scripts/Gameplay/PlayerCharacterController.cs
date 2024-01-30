@@ -1,7 +1,6 @@
 ﻿using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.Events;
-using Unity.FPS.UI;
 using System.Collections;
 using System;
 
@@ -154,6 +153,7 @@ namespace Unity.FPS.Gameplay
         RaycastHit hit;
         public float radius;
         public LayerMask layerMask;
+        public UnityAction onFreeze;
         void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -166,9 +166,10 @@ namespace Unity.FPS.Gameplay
 
             foreach (Collider col in colliders)
             {
-                col.gameObject.GetComponent<Actor>().Affiliation = 1;
+                /*col.gameObject.GetComponent<Actor>().Affiliation = 1;
                 col.gameObject.GetComponentInChildren<Animator>().SetFloat("MoveSpeed", 0f);
-                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);
+                col.gameObject.GetComponentInChildren<Animator>().SetBool("Alerted", false);*/
+                EventManager.Broadcast(new FreezeEnemyEvent());
             }
         }
 
