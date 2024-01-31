@@ -35,7 +35,7 @@ namespace Unity.FPS.UI
             for (int i = 0; i < abilities.Length; i++)
             {
                 GameObject buttonObject = Instantiate(buttonPrefab, transform);
-                buttonObject.transform.parent = transform;
+                buttonObject.transform.parent = player.transform;
                 buttons[i] = buttonObject.GetComponent<Button>();
                 int closureIndex = i;
                 buttons[closureIndex].onClick.AddListener(() => EnableAbility(closureIndex));
@@ -61,7 +61,7 @@ namespace Unity.FPS.UI
                         case State.ready:
                             if (Input.GetKeyDown(abilityKeys[i]))
                             {
-                                abilities[i].Activate(player);
+                                abilities[i].Activate(gameObject);
                                 states[i] = State.activated;
                                 activeTimes[i] = abilities[i].activeTime;
                             }
