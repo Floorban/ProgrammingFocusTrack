@@ -35,7 +35,7 @@ namespace Unity.FPS.UI
 
         void Start()
         {
-            abilityPanel.SetActive(false);
+            //abilityPanel.SetActive(false);
             m_PlayerInputsHandler = FindObjectOfType<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerInputHandler, InGameMenuManager>(m_PlayerInputsHandler,
                 this);

@@ -12,6 +12,7 @@ namespace Unity.FPS.UI
         [SerializeField] float[] cooldownTimes;
         [SerializeField] KeyCode[] abilityKeys;
         [SerializeField] InGameMenuManager menuManager;
+        [SerializeField] GameObject player;
         enum State
         {
             ready,
@@ -30,12 +31,14 @@ namespace Unity.FPS.UI
             states = new State[abilities.Length];
               
             canUsed = new bool[3];
+            buttons = new Button[3];
             for (int i = 0; i < abilities.Length; i++)
             {
                 GameObject buttonObject = Instantiate(buttonPrefab, transform);
                 buttonObject.transform.parent = transform;
                 buttons[i] = buttonObject.GetComponent<Button>();
-                buttons[i].onClick.AddListener(() => EnableAbility(i));
+                int closureIndex = i;
+                buttons[closureIndex].onClick.AddListener(() => EnableAbility(closureIndex));
             }
         }
         void Update()
@@ -45,19 +48,20 @@ namespace Unity.FPS.UI
         public void EnableAbility(int buttonIndex)
         {
             canUsed[buttonIndex] = true;
-            menuManager.CloseAbilityPanel();
+            menuManager.ClosePauseMenu();
         }
         void HandleAbilityStateSwitch()
         {
             for (int i = 0; i < abilities.Length; i++)
             {
-                if (!canUsed[i]) continue;
+                if (canUsed[i])
+                {
                     switch (states[i])
                     {
                         case State.ready:
                             if (Input.GetKeyDown(abilityKeys[i]))
                             {
-                                abilities[i].Activate(gameObject);
+                                abilities[i].Activate(player);
                                 states[i] = State.activated;
                                 activeTimes[i] = abilities[i].activeTime;
                             }
@@ -83,7 +87,10 @@ namespace Unity.FPS.UI
                                 states[i] = State.ready;
                             }
                             break;
-                    }           
+                    }
+
+                }
+
             }
         }
     }
