@@ -30,21 +30,17 @@ namespace Unity.FPS.UI
             states = new State[abilities.Length];
               
             canUsed = new bool[3];
-
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                GameObject buttonObject = Instantiate(buttonPrefab, transform);
+                buttonObject.transform.parent = transform;
+                buttons[i] = buttonObject.GetComponent<Button>();
+                buttons[i].onClick.AddListener(() => EnableAbility(i));
+            }
         }
         void Update()
         {
             HandleAbilityStateSwitch();
-            if (Input.GetKey(KeyCode.T))
-            {
-                for (int i = 0; i < abilities.Length; i++)
-                {
-                    GameObject buttonObject = Instantiate(buttonPrefab, transform);
-                    buttonObject.transform.parent = transform;
-                    buttons[i] = buttonObject.GetComponent<Button>();
-                    buttons[i].onClick.AddListener(() => EnableAbility(i));
-                }
-            }
         }
         public void EnableAbility(int buttonIndex)
         {
