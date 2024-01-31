@@ -10,14 +10,15 @@ namespace Unity.FPS.UI
     {
         [SerializeField] List<Loot> lootList = new List<Loot>();
         [SerializeField] GameObject panel;
-        [SerializeField] GameObject canvas;
         [SerializeField] List<GameObject> spawnedLootObjects = new List<GameObject>();
 
         public UnityAction<string> OnUnlockPowerUp;
         [SerializeField] string[] powerUpNames;
-        PlayerCharacterController player;
+        [SerializeField] InGameMenuManager menuManager;
         private void Start()
         {
+            menuManager = GetComponent<InGameMenuManager>();
+
             powerUpNames = new string[8];
             powerUpNames[0] = "MoveSpeed++";
             powerUpNames[1] = "JumpHeight++";
@@ -28,55 +29,36 @@ namespace Unity.FPS.UI
             powerUpNames[6] = "ReloadDelay--";
             powerUpNames[7] = "AmmoCapacity++";
 
-            player = FindObjectOfType<PlayerCharacterController>();
-
             EventManager.AddListener<LevelUpEvent>(OnLevelUpEvent);
-            canvas.SetActive(false);
+            panel.SetActive(false);
 
         }
         public void OpenPanel()
         {
-            panel.SetActive(true);
-            EventManager.Broadcast(new LevelUpEvent());
+            menuManager.SetPauseMenuActivation(panel, true);
+            InstantiateButtons(panel.transform, 3);
 
-            /*Vector3 position = new Vector3(680f, 440f, 0);
-            Vector3 position2 = new Vector3(780f, 440f, 0);
-            Vector3 position3 = new Vector3(880f, 440f, 0);
-            InstantiateButton(position);
-            InstantiateButton(position2);
-            InstantiateButton(position3);*/
-
-            InstantiateButtons(canvas.transform, 3);
+             /*Vector3 position = new Vector3(680f, 440f, 0);
+                Vector3 position2 = new Vector3(780f, 440f, 0);
+                Vector3 position3 = new Vector3(880f, 440f, 0);
+                InstantiateButton(position);
+                InstantiateButton(position2);
+                InstantiateButton(position3);*/
         }
         void OnLevelUpEvent(LevelUpEvent evt)
         {
-            panel.SetActive(true);
-            EventManager.Broadcast(new LevelUpEvent());
-
-            /*Vector3 position = new Vector3(680f, 440f, 0);
-            Vector3 position2 = new Vector3(780f, 440f, 0);
-            Vector3 position3 = new Vector3(880f, 440f, 0);
-            InstantiateButton(position);
-            InstantiateButton(position2);
-            InstantiateButton(position3);*/
-
-            InstantiateButtons(canvas.transform, 3);
+            menuManager.SetPauseMenuActivation(panel, true);
+            InstantiateButtons(panel.transform, 3);
         }
         public void ClosePanel(int buttonID)
         {
-            EventManager.Broadcast(new LevelUpEvent());
-            Time.timeScale = 1f;
-            player.canInput = true;
-            player.enabled = true;
-            panel.SetActive(false);
+            menuManager.SetPauseMenuActivation(panel, false);
             OnUnlockPowerUp.Invoke(powerUpNames[buttonID]);
             foreach (GameObject lootObject in spawnedLootObjects)
             {
                 Destroy(lootObject);
             }
             spawnedLootObjects.Clear();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
         Loot GetDroppedItem(List<Loot> excludeList)
         {
@@ -106,7 +88,7 @@ namespace Unity.FPS.UI
                 if (droppedItem != null && droppedItem.lootPrefab != null)
                 {
                     GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, parentTransform);
-                    lootGameObject.transform.parent = canvas.transform;
+                    lootGameObject.transform.parent = panel.transform;
                     spawnedLootObjects.Add(lootGameObject);
                     excludeList.Add(droppedItem);
                 }
