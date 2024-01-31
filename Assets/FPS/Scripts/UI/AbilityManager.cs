@@ -12,7 +12,7 @@ namespace Unity.FPS.UI
         [SerializeField] float[] cooldownTimes;
         [SerializeField] KeyCode[] abilityKeys;
         [SerializeField] InGameMenuManager menuManager;
-        [SerializeField] GameObject player;
+        [SerializeField] GameObject abilityPanel;
         enum State
         {
             ready,
@@ -35,7 +35,7 @@ namespace Unity.FPS.UI
             for (int i = 0; i < abilities.Length; i++)
             {
                 GameObject buttonObject = Instantiate(buttonPrefab, transform);
-                buttonObject.transform.parent = player.transform;
+                buttonObject.transform.parent = abilityPanel.transform;
                 buttons[i] = buttonObject.GetComponent<Button>();
                 int closureIndex = i;
                 buttons[closureIndex].onClick.AddListener(() => EnableAbility(closureIndex));

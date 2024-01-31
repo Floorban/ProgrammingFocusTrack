@@ -5268,12 +5268,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416256558}
   m_CullTransparentMesh: 1
---- !u!224 &417917616 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
-    type: 3}
-  m_PrefabInstance: {fileID: 4008933581619590512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &475488566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5963937743390997973, guid: 7042f8fe21debc944b5bdc894f478d63,
@@ -6275,8 +6269,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f044b0f862b89b544bc74d0f8cacb071, type: 2}
   - {fileID: 11400000, guid: 5093d78d9cf015d47bfc795e354eae7f, type: 2}
   - {fileID: 11400000, guid: 5093d78d9cf015d47bfc795e354eae7f, type: 2}
-  panel: {fileID: 1873285535}
-  canvas: {fileID: 417917616}
+  panel: {fileID: 4008933581619590514}
+  canvas: {fileID: 4008933581619590513}
   spawnedLootObjects: []
   powerUpNames: []
 --- !u!1001 &1647969997
@@ -6579,12 +6573,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1873285535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7005287959772834456, guid: c996b53e9f849234393d1e90f68d1679,
-    type: 3}
-  m_PrefabInstance: {fileID: 4008933581619590512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1880561205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5963937743390997973, guid: 7042f8fe21debc944b5bdc894f478d63,
@@ -8800,7 +8788,7 @@ MonoBehaviour:
   cooldownTimes: []
   abilityKeys: 680000006a0000006b000000
   menuManager: {fileID: 0}
-  player: {fileID: 29570611}
+  abilityPanel: {fileID: 0}
   states: 
   canUsed: 
   buttons: []
@@ -11042,7 +11030,7 @@ PrefabInstance:
         type: 3}
       propertyPath: MenuRoot
       value: 
-      objectReference: {fileID: 1873285535}
+      objectReference: {fileID: 4008933581619590514}
     - target: {fileID: 1567544279954943050, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_Enabled
@@ -11052,7 +11040,7 @@ PrefabInstance:
         type: 3}
       propertyPath: abilityPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 29570611}
     - target: {fileID: 1567544280016421711, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -11563,6 +11551,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1608594642}
   m_SourcePrefab: {fileID: 100100000, guid: c996b53e9f849234393d1e90f68d1679, type: 3}
+--- !u!224 &4008933581619590513 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3216776312791273857, guid: c996b53e9f849234393d1e90f68d1679,
+    type: 3}
+  m_PrefabInstance: {fileID: 4008933581619590512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4008933581619590514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1567544280196189686, guid: c996b53e9f849234393d1e90f68d1679,
+    type: 3}
+  m_PrefabInstance: {fileID: 4008933581619590512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9217268748774167426
 PrefabInstance:
   m_ObjectHideFlags: 0

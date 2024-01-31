@@ -2,14 +2,16 @@
 using Unity.FPS.Gameplay;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Unity.FPS.UI
 {
     public class InGameMenuManager : MonoBehaviour
     {
         [Tooltip("Root GameObject of the menu used to toggle its activation")]
-        public GameObject MenuRoot, abilityPanel;
+        public GameObject MenuRoot, pausePanel, abilityPanel;
 
         [Tooltip("Master volume when menu is open")] [Range(0.001f, 1f)]
         public float VolumeWhenMenuOpen = 0.5f;
@@ -32,10 +34,14 @@ namespace Unity.FPS.UI
         PlayerInputHandler m_PlayerInputsHandler;
         Health m_PlayerHealth;
         FramerateCounter m_FramerateCounter;
-
         void Start()
-        {
-            //abilityPanel.SetActive(false);
+        {  
+            MenuRoot.SetActive(false);
+            pausePanel.SetActive(false);
+            abilityPanel.SetActive(false);
+
+            EventManager.AddListener<PauseEvent>(OnLevelUpEvent);
+
             m_PlayerInputsHandler = FindObjectOfType<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerInputHandler, InGameMenuManager>(m_PlayerInputsHandler,
                 this);
@@ -45,8 +51,6 @@ namespace Unity.FPS.UI
 
             m_FramerateCounter = FindObjectOfType<FramerateCounter>();
             DebugUtility.HandleErrorIfNullFindObject<FramerateCounter, InGameMenuManager>(m_FramerateCounter, this);
-
-            MenuRoot.SetActive(false);
 
             LookSensitivitySlider.value = m_PlayerInputsHandler.LookSensitivity;
             LookSensitivitySlider.onValueChanged.AddListener(OnMouseSensitivityChanged);
@@ -60,7 +64,6 @@ namespace Unity.FPS.UI
             FramerateToggle.isOn = m_FramerateCounter.UIText.gameObject.activeSelf;
             FramerateToggle.onValueChanged.AddListener(OnFramerateCounterChanged);
         }
-
         void Update()
         {
             // Lock cursor when clicking outside of menu
@@ -86,11 +89,12 @@ namespace Unity.FPS.UI
                 }
 
                 SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
-
+                SetPauseMenuActivation(pausePanel, !pausePanel.activeSelf);
             }
             if (Input.GetButtonDown(GameConstants.k_ButtonNameAbilityPanel)
                  || (abilityPanel.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
             {
+                SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
                 SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
             }
 
@@ -102,6 +106,10 @@ namespace Unity.FPS.UI
                     LookSensitivitySlider.Select();
                 }
             }
+        }
+        void OnLevelUpEvent(PauseEvent evt)
+        {
+
         }
 
         public void ClosePauseMenu()
@@ -134,7 +142,6 @@ namespace Unity.FPS.UI
             }
 
         }
-    
         void OnMouseSensitivityChanged(float newValue)
         {
             m_PlayerInputsHandler.LookSensitivity = newValue;

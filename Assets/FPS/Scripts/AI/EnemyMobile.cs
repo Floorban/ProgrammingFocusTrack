@@ -173,10 +173,10 @@ namespace Unity.FPS.AI
                 freezingtimer = 0f;
             }
         }
-        void OnFreezeMessageEvent(FreezeEnemyEvent evt)
+        /*void OnFreezeMessageEvent(FreezeEnemyEvent evt)
         {
             AiState = AIState.Frozen;
-        }
+        }*/
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);

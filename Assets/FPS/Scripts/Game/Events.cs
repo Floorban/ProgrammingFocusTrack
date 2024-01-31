@@ -16,10 +16,10 @@ namespace Unity.FPS.Game
         public static AmmoPickupEvent AmmoPickupEvent = new AmmoPickupEvent();
         public static DamageEvent DamageEvent = new DamageEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
-        public static FreezeEnemyEvent FreezeEnemyEvent = new FreezeEnemyEvent();
+        public static PauseEvent FreezeEnemyEvent = new PauseEvent();
     }
 
-    public class FreezeEnemyEvent: GameEvent
+    public class PauseEvent: GameEvent
     {
     }
     public class ObjectiveUpdateEvent : GameEvent

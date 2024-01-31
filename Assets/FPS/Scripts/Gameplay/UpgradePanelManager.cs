@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Unity.FPS.Game;
 
 namespace Unity.FPS.Gameplay
 {
@@ -31,11 +32,8 @@ namespace Unity.FPS.Gameplay
         }
         public void OpenPanel()
         {
-            player.canInput = false;
-            Time.timeScale = 0f;
             panel.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            EventManager.Broadcast(new PauseEvent());
 
             /*Vector3 position = new Vector3(680f, 440f, 0);
             Vector3 position2 = new Vector3(780f, 440f, 0);
