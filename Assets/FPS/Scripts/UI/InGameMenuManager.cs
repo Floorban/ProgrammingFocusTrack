@@ -2,9 +2,7 @@
 using Unity.FPS.Gameplay;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 namespace Unity.FPS.UI
 {
@@ -36,11 +34,9 @@ namespace Unity.FPS.UI
         FramerateCounter m_FramerateCounter;
         void Start()
         {  
-            MenuRoot.SetActive(false);
+            //MenuRoot.SetActive(false);
             pausePanel.SetActive(false);
             abilityPanel.SetActive(false);
-
-            EventManager.AddListener<PauseEvent>(OnLevelUpEvent);
 
             m_PlayerInputsHandler = FindObjectOfType<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerInputHandler, InGameMenuManager>(m_PlayerInputsHandler,
@@ -88,13 +84,13 @@ namespace Unity.FPS.UI
                     return;
                 }
 
-                SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
+                //SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
                 SetPauseMenuActivation(pausePanel, !pausePanel.activeSelf);
             }
             if (Input.GetButtonDown(GameConstants.k_ButtonNameAbilityPanel)
                  || (abilityPanel.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
             {
-                SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
+                //SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
                 SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
             }
 
@@ -106,10 +102,6 @@ namespace Unity.FPS.UI
                     LookSensitivitySlider.Select();
                 }
             }
-        }
-        void OnLevelUpEvent(PauseEvent evt)
-        {
-            SetPauseMenuActivation(powerUpPanel, powerUpPanel.activeSelf);
         }
 
         public void ClosePauseMenu()

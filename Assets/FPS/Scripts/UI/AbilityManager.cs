@@ -48,7 +48,7 @@ namespace Unity.FPS.UI
         public void EnableAbility(int buttonIndex)
         {
             canUsed[buttonIndex] = true;
-            menuManager.ClosePauseMenu();
+            menuManager.SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
         }
         void HandleAbilityStateSwitch()
         {

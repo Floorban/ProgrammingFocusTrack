@@ -141,7 +141,6 @@ namespace Unity.FPS.Gameplay
         const float k_GroundCheckDistanceInAir = 0.07f;
 
         [Header("Leveling system")]
-        [SerializeField] UpgradePanelManager levelUpManager;
         public float currentExperience, maxExperience;
         public int currentLevel, openCounter;
 
@@ -279,7 +278,8 @@ namespace Unity.FPS.Gameplay
             maxExperience += 5;
             Debug.Log($"Current Level: {currentLevel} | | MaxSpeed: {MaxSpeedOnGround} | | JumpForce: {JumpForce} || MaxHealth: {m_Health.MaxHealth}");
 
-            levelUpManager.OpenPanel();
+            EventManager.Broadcast(new LevelUpEvent());
+            //levelUpManager.OpenPanel();
         }
         void OnDie()
         {

@@ -1,10 +1,9 @@
 using Unity.FPS.Gameplay;
 using Unity.FPS.Game;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Unity.FPS.Gameplay
+namespace Unity.FPS.UI
 {
     public class UpgradeButton : MonoBehaviour
     {

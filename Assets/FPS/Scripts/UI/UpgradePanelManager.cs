@@ -2,14 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 
-namespace Unity.FPS.Gameplay
+namespace Unity.FPS.UI
 {
     public class UpgradePanelManager : MonoBehaviour
     {
         [SerializeField] List<Loot> lootList = new List<Loot>();
         [SerializeField] GameObject panel;
-        [SerializeField] Transform canvas;
+        [SerializeField] GameObject canvas;
         [SerializeField] List<GameObject> spawnedLootObjects = new List<GameObject>();
 
         public UnityAction<string> OnUnlockPowerUp;
@@ -29,11 +30,28 @@ namespace Unity.FPS.Gameplay
 
             player = FindObjectOfType<PlayerCharacterController>();
 
+            EventManager.AddListener<LevelUpEvent>(OnLevelUpEvent);
+            canvas.SetActive(false);
+
         }
         public void OpenPanel()
         {
             panel.SetActive(true);
-            EventManager.Broadcast(new PauseEvent());
+            EventManager.Broadcast(new LevelUpEvent());
+
+            /*Vector3 position = new Vector3(680f, 440f, 0);
+            Vector3 position2 = new Vector3(780f, 440f, 0);
+            Vector3 position3 = new Vector3(880f, 440f, 0);
+            InstantiateButton(position);
+            InstantiateButton(position2);
+            InstantiateButton(position3);*/
+
+            InstantiateButtons(canvas.transform, 3);
+        }
+        void OnLevelUpEvent(LevelUpEvent evt)
+        {
+            panel.SetActive(true);
+            EventManager.Broadcast(new LevelUpEvent());
 
             /*Vector3 position = new Vector3(680f, 440f, 0);
             Vector3 position2 = new Vector3(780f, 440f, 0);
@@ -46,7 +64,7 @@ namespace Unity.FPS.Gameplay
         }
         public void ClosePanel(int buttonID)
         {
-            EventManager.Broadcast(new PauseEvent());
+            EventManager.Broadcast(new LevelUpEvent());
             Time.timeScale = 1f;
             player.canInput = true;
             player.enabled = true;
