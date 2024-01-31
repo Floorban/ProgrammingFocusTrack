@@ -1,8 +1,7 @@
-using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Unity.FPS.Gameplay
+namespace Unity.FPS.AI
 {
     [CreateAssetMenu(menuName = "Abilities/Freeze")]
     public class Freeze : Ability
@@ -19,7 +18,7 @@ namespace Unity.FPS.Gameplay
             Collider[] colliders = Physics.OverlapSphere(player.transform.position, radius, layerMask);
             foreach (Collider col in colliders)
             {
-                Debug.Log(col.gameObject);
+                col.gameObject.GetComponent<EnemyMobile>().OnFreeze();
                 //onFreeze.Invoke();
             }
         }

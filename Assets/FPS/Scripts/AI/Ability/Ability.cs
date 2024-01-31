@@ -1,7 +1,7 @@
-using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 using UnityEngine;
 
-namespace Unity.FPS.Gameplay
+namespace Unity.FPS.AI
 {
     public class Ability : ScriptableObject
     {

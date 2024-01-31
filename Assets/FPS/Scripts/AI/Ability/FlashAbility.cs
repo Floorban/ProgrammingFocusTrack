@@ -1,8 +1,6 @@
-using System.Collections;
-using Unity.FPS.Game;
 using UnityEngine;
 
-namespace Unity.FPS.Gameplay
+namespace Unity.FPS.AI
 {
     [CreateAssetMenu(menuName = "Abilities/Flash")]
     public class FlashAbility : Ability
