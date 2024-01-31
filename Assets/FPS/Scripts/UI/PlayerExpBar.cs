@@ -2,6 +2,7 @@ using Unity.FPS.Game;
 using Unity.FPS.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Unity.FPS.UI
 {
@@ -13,6 +14,7 @@ namespace Unity.FPS.UI
         PlayerCharacterController m_PlayerController;
         private float lerpSpeed;
 
+        public TextMeshProUGUI openConterText;
         void Start()
         {
             PlayerCharacterController playerCharacterController =
@@ -30,7 +32,8 @@ namespace Unity.FPS.UI
             //lerpSpeed = 10f * Time.deltaTime;
             //ExpFillImage.fillAmount = Mathf.Lerp(ExpFillImage.fillAmount, m_PlayerController.currentExperience / m_PlayerController.maxExperience, lerpSpeed);
 
-            ExpFillImage.fillAmount = m_PlayerController.currentExperience / m_PlayerController.maxExperience;
+            openConterText.text = m_PlayerController.openCounter.ToString();
+            ExpFillImage.fillAmount = m_PlayerController.currentExperience / (m_PlayerController.maxExperience);
         }
 
     }

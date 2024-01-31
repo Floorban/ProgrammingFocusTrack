@@ -6663,6 +6663,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &2085672272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220775235101385327, guid: c996b53e9f849234393d1e90f68d1679,
+    type: 3}
+  m_PrefabInstance: {fileID: 4008933581619590512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2091206812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2141676431450117668, guid: cd17687759887a0438ee021e51abc9d9,
@@ -11297,6 +11309,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 960
       objectReference: {fileID: 0}
+    - target: {fileID: 3220775235101385327, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220775235101385327, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220775235101385327, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220775235101385327, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3235725120536374800, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -11414,6 +11446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119255502580830958, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
+      propertyPath: openConterText
+      value: 
+      objectReference: {fileID: 2085672272}
+    - target: {fileID: 5119255502580830958, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
       propertyPath: m_PlayerController
       value: 
       objectReference: {fileID: 2729281214152228931}
@@ -11480,6 +11517,11 @@ PrefabInstance:
     - target: {fileID: 5929975702948265507, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_ChildScaleWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929975702948265507, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
+      propertyPath: m_ChildScaleHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929975702948265507, guid: c996b53e9f849234393d1e90f68d1679,
@@ -11600,12 +11642,12 @@ PrefabInstance:
     - target: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
@@ -11620,7 +11662,7 @@ PrefabInstance:
     - target: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 7111352767656716707, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
@@ -11751,6 +11793,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1994302515043699083, guid: c996b53e9f849234393d1e90f68d1679, type: 3}
     - {fileID: 5353794627283999698, guid: c996b53e9f849234393d1e90f68d1679, type: 3}
+    - {fileID: 788015820497688015, guid: c996b53e9f849234393d1e90f68d1679, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7794468460312828728, guid: c996b53e9f849234393d1e90f68d1679,

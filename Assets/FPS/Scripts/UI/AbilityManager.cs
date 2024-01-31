@@ -60,12 +60,14 @@ namespace Unity.FPS.UI
         {
             if (player.openCounter < buyPrices[buttonIndex])
             {
-                OnUnlockPowerUp.Invoke("Not Enough Levels");
+                OnUnlockPowerUp.Invoke($"Need {buyPrices[buttonIndex] - player.openCounter} more coins");
             }else
             {
                 player.openCounter -= buyPrices[buttonIndex];
                 canUsed[buttonIndex] = true;
                 OnUnlockPowerUp.Invoke(abilityNames[buttonIndex]);
+                buttons[buttonIndex].image.color = Color.red;
+                buttons[buttonIndex].enabled = false;
             }
             menuManager.SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
         }
