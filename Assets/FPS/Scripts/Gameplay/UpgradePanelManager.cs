@@ -54,13 +54,13 @@ namespace Unity.FPS.Gameplay
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        Loot GetDroppedItem()
+        Loot GetDroppedItem(List<Loot> excludeList)
         {
             int randomNumber = Random.Range(1, 101);
             List<Loot> possibleItems = new List<Loot>();
             foreach (Loot item in lootList)
             {
-                if (randomNumber <= item.dropChance)
+                if (randomNumber <= item.dropChance && !excludeList.Contains(item))
                 {
                     possibleItems.Add(item);
                 }
@@ -75,14 +75,16 @@ namespace Unity.FPS.Gameplay
 
         void InstantiateButtons(Transform parentTransform, int numberOfButtons)
         {
+            List<Loot> excludeList = new List<Loot>();
             for (int i = 0; i < numberOfButtons; i++)
             {
-                Loot droppedItem = GetDroppedItem();
+                Loot droppedItem = GetDroppedItem(excludeList);
                 if (droppedItem != null && droppedItem.lootPrefab != null)
                 {
                     GameObject lootGameObject = Instantiate(droppedItem.lootPrefab, parentTransform);
                     lootGameObject.transform.parent = canvas.transform;
                     spawnedLootObjects.Add(lootGameObject);
+                    excludeList.Add(droppedItem);
                 }
             }
         }
