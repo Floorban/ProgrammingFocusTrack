@@ -11,7 +11,7 @@ namespace Unity.FPS.UI
     public class InGameMenuManager : MonoBehaviour
     {
         [Tooltip("Root GameObject of the menu used to toggle its activation")]
-        public GameObject MenuRoot, pausePanel, abilityPanel;
+        public GameObject MenuRoot, pausePanel, abilityPanel, powerUpPanel;
 
         [Tooltip("Master volume when menu is open")] [Range(0.001f, 1f)]
         public float VolumeWhenMenuOpen = 0.5f;
@@ -109,7 +109,7 @@ namespace Unity.FPS.UI
         }
         void OnLevelUpEvent(PauseEvent evt)
         {
-
+            SetPauseMenuActivation(powerUpPanel, powerUpPanel.activeSelf);
         }
 
         public void ClosePauseMenu()

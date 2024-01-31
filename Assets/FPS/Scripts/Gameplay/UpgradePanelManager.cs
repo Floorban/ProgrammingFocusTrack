@@ -46,6 +46,7 @@ namespace Unity.FPS.Gameplay
         }
         public void ClosePanel(int buttonID)
         {
+            EventManager.Broadcast(new PauseEvent());
             Time.timeScale = 1f;
             player.canInput = true;
             player.enabled = true;
