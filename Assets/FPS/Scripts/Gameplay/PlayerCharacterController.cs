@@ -157,6 +157,7 @@ namespace Unity.FPS.Gameplay
         }
         void Start()
         {
+            canInput = true;
             // fetch components on the same gameObject
             m_Controller = GetComponent<CharacterController>();
             DebugUtility.HandleErrorIfNullGetComponent<CharacterController, PlayerCharacterController>(m_Controller,
@@ -328,9 +329,10 @@ namespace Unity.FPS.Gameplay
                 }
             }
         }
-
+        public bool canInput;
         void HandleCharacterMovement()
         {
+            if (!canInput) return;
             // horizontal character rotation
             {
                 // rotate the transform with the input speed around its local Y axis

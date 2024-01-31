@@ -113,6 +113,8 @@ namespace Unity.FPS.AI
         WeaponController[] m_Weapons;
         NavigationModule m_NavigationModule;
 
+        public bool isFrozen;
+
         [Header("Loot")]
         [Tooltip("The object this enemy can drop when dying")]
         [SerializeField] List<Loot> lootList = new List<Loot>();
@@ -202,8 +204,6 @@ namespace Unity.FPS.AI
                     m_EyeRendererData.MaterialIndex);
             }
         }
-
-        public bool isFrozen;
         void Update()
         {
             if (isFrozen) return;

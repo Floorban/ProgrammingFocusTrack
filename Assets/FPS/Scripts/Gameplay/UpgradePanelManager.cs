@@ -13,6 +13,7 @@ namespace Unity.FPS.Gameplay
 
         public UnityAction<string> OnUnlockPowerUp;
         [SerializeField] string[] powerUpNames;
+        PlayerCharacterController player;
         private void Start()
         {
             powerUpNames = new string[8];
@@ -24,9 +25,13 @@ namespace Unity.FPS.Gameplay
             powerUpNames[5] = "ReloadSpeed++";
             powerUpNames[6] = "ReloadDelay--";
             powerUpNames[7] = "AmmoCapacity++";
+
+            player = FindObjectOfType<PlayerCharacterController>();
+
         }
         public void OpenPanel()
         {
+            player.canInput = false;
             Time.timeScale = 0f;
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -44,6 +49,8 @@ namespace Unity.FPS.Gameplay
         public void ClosePanel(int buttonID)
         {
             Time.timeScale = 1f;
+            player.canInput = true;
+            player.enabled = true;
             panel.SetActive(false);
             OnUnlockPowerUp.Invoke(powerUpNames[buttonID]);
             foreach (GameObject lootObject in spawnedLootObjects)
