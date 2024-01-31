@@ -84,7 +84,7 @@ namespace Unity.FPS.UI
                     return;
                 }
 
-                SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
+                SetPauseMenuActivation(!MenuRoot.activeSelf);
 
             }
 
@@ -100,19 +100,20 @@ namespace Unity.FPS.UI
 
         public void ClosePauseMenu()
         {
-            SetPauseMenuActivation(MenuRoot, false);
+            SetPauseMenuActivation(false);
         }
 
-        void SetPauseMenuActivation(GameObject panel, bool active)
+        void SetPauseMenuActivation(bool active)
         {
-           panel.SetActive(active);
+            MenuRoot.SetActive(active);
 
-            if (panel.activeSelf)
+            if (MenuRoot.activeSelf)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;
                 AudioUtility.SetMasterVolume(VolumeWhenMenuOpen);
+
                 EventSystem.current.SetSelectedGameObject(null);
             }
             else
