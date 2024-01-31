@@ -6,7 +6,7 @@ namespace Unity.FPS.AI
     [CreateAssetMenu(menuName = "Abilities/Freeze")]
     public class Freeze : Ability
     {
-        public UnityAction onFreeze;
+        //public UnityAction onFreeze;
         public float freezingTime;
 
         [Header("SphereCast")]
@@ -15,11 +15,11 @@ namespace Unity.FPS.AI
         public override void Activate(GameObject player)
         {
             //EventManager.Broadcast(new FreezeEnemyEvent());
+            //onFreeze.Invoke();
             Collider[] colliders = Physics.OverlapSphere(player.transform.position, radius, layerMask);
             foreach (Collider col in colliders)
             {
                 col.gameObject.GetComponent<EnemyMobile>().OnFreeze();
-                //onFreeze.Invoke();
             }
         }
     }

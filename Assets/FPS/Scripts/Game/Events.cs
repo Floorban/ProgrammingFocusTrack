@@ -21,7 +21,6 @@ namespace Unity.FPS.Game
 
     public class FreezeEnemyEvent: GameEvent
     {
-        public float freezingTime;
     }
     public class ObjectiveUpdateEvent : GameEvent
     {

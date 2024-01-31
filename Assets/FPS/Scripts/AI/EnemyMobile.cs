@@ -64,8 +64,8 @@ namespace Unity.FPS.AI
             m_AudioSource.clip = MovementSound;
             m_AudioSource.Play();
 
-            EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
-            freeze.onFreeze += OnFreeze;
+            //EventManager.AddListener<FreezeEnemyEvent>(OnFreezeMessageEvent);
+            //freeze.onFreeze += OnFreeze;
         }
         public void OnFreeze()
         {
