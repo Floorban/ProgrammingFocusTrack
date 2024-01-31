@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Unity.FPS.AI;
 
 namespace Unity.FPS.UI
@@ -20,6 +21,7 @@ namespace Unity.FPS.UI
         [SerializeField] State[] states;
         [SerializeField] bool[] canUsed;
         [SerializeField] Button[] buttons;
+        [SerializeField] GameObject buttonPrefab;
         void Start()
         {
             menuManager = FindObjectOfType<InGameMenuManager>();
@@ -28,22 +30,25 @@ namespace Unity.FPS.UI
             states = new State[abilities.Length];
               
             canUsed = new bool[3];
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                buttons[i].onClick.AddListener(EnableAbility);
-            }
 
         }
         void Update()
         {
             HandleAbilityStateSwitch();
-        }
-        public void EnableAbility()
-        {
-            for (int i = 0; i < canUsed.Length; i++)
+            if (Input.GetKey(KeyCode.T))
             {
-                canUsed[i] = true;
+                for (int i = 0; i < abilities.Length; i++)
+                {
+                    GameObject buttonObject = Instantiate(buttonPrefab, transform);
+                    buttonObject.transform.parent = transform;
+                    buttons[i] = buttonObject.GetComponent<Button>();
+                    buttons[i].onClick.AddListener(() => EnableAbility(i));
+                }
             }
+        }
+        public void EnableAbility(int buttonIndex)
+        {
+            canUsed[buttonIndex] = true;
             menuManager.CloseAbilityPanel();
         }
         void HandleAbilityStateSwitch()

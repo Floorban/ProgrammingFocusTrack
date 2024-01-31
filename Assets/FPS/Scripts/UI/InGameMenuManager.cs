@@ -91,7 +91,7 @@ namespace Unity.FPS.UI
             if (Input.GetButtonDown(GameConstants.k_ButtonNameAbilityPanel)
                  || (abilityPanel.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
             {
-                SetPauseMenuActivation(abilityPanel, !MenuRoot.activeSelf);
+                SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
             }
 
             if (Input.GetAxisRaw(GameConstants.k_AxisNameVertical) != 0)
@@ -111,9 +111,7 @@ namespace Unity.FPS.UI
         public void CloseAbilityPanel()
         {
             SetPauseMenuActivation(abilityPanel, false);
-            Debug.Log("ss");
         }
-
 
         public void SetPauseMenuActivation(GameObject panel, bool active)
         {
