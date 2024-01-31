@@ -265,7 +265,7 @@ namespace Unity.FPS.Gameplay
 
             if (currentExperience >= maxExperience)
             {
-                currentExperience = 0;
+                currentExperience = currentExperience - maxExperience;
                 Debug.Log("Level Up!");
                 LevelUp();
             }
