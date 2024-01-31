@@ -15,9 +15,11 @@ namespace Unity.FPS.UI
         public UnityAction<string> OnUnlockPowerUp;
         [SerializeField] string[] powerUpNames;
         [SerializeField] InGameMenuManager menuManager;
+        [SerializeField] PlayerExpBar expBar;
         private void Start()
         {
             menuManager = GetComponent<InGameMenuManager>();
+            expBar = GetComponent<PlayerExpBar>();
 
             powerUpNames = new string[8];
             powerUpNames[0] = "MoveSpeed++";
