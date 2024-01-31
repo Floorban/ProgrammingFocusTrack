@@ -26,6 +26,9 @@ namespace Unity.FPS.UI
             UpgradePanelManager upgradePanel = FindObjectOfType<UpgradePanelManager>();
             upgradePanel.OnUnlockPowerUp += OnUnlockPowerUp;
 
+            AbilityManager abilityManager = FindObjectOfType<AbilityManager>();
+            abilityManager.OnUnlockPowerUp += OnUnlockPowerUp;
+
             EventManager.AddListener<ObjectiveUpdateEvent>(OnObjectiveUpdateEvent);
         }
         void OnUnlockPowerUp(string powerup)

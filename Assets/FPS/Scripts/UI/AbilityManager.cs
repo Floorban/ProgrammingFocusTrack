@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using Unity.FPS.AI;
+using Unity.FPS.Gameplay;
+using UnityEngine.Events;
 
 namespace Unity.FPS.UI
 {
@@ -23,8 +24,18 @@ namespace Unity.FPS.UI
         [SerializeField] bool[] canUsed;
         [SerializeField] Button[] buttons;
         [SerializeField] GameObject buttonPrefab;
+        [SerializeField] PlayerCharacterController player;
+        [SerializeField] string[] abilityNames;
+        [SerializeField] int[] buyPrices;
+        public UnityAction<string> OnUnlockPowerUp;
         void Start()
         {
+            abilityNames = new string[3];
+            abilityNames[0] = "Self-Heal Unlocked";
+            abilityNames[1] = "Flash Unlocked";
+            abilityNames[2] = "Freeze Skill Unlocked";
+
+            player = FindObjectOfType<PlayerCharacterController>();
             menuManager = FindObjectOfType<InGameMenuManager>();
             activeTimes = new float[abilities.Length];
             cooldownTimes = new float[abilities.Length];
@@ -47,7 +58,15 @@ namespace Unity.FPS.UI
         }
         public void EnableAbility(int buttonIndex)
         {
-            canUsed[buttonIndex] = true;
+            if (player.openCounter < buyPrices[buttonIndex])
+            {
+                OnUnlockPowerUp.Invoke("Not Enough Levels");
+            }else
+            {
+                player.openCounter -= buyPrices[buttonIndex];
+                canUsed[buttonIndex] = true;
+                OnUnlockPowerUp.Invoke(abilityNames[buttonIndex]);
+            }
             menuManager.SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
         }
         void HandleAbilityStateSwitch()

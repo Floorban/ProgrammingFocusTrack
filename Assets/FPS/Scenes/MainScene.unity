@@ -8578,7 +8578,7 @@ PrefabInstance:
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: maxExperience
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -8671,6 +8671,26 @@ PrefabInstance:
       propertyPath: abilityPanel
       value: 
       objectReference: {fileID: 29570611}
+    - target: {fileID: 6424587532733783852, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: buyPrices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424587532733783852, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: buyPrices.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424587532733783852, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: buyPrices.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424587532733783852, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: buyPrices.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7253983127304857660, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: m_Name

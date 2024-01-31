@@ -3410,9 +3410,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5093d78d9cf015d47bfc795e354eae7f, type: 2}
   - {fileID: 11400000, guid: 5093d78d9cf015d47bfc795e354eae7f, type: 2}
   panel: {fileID: 8824232397423385169}
-  canvas: {fileID: 4339937129853663452}
   spawnedLootObjects: []
   powerUpNames: []
+  menuManager: {fileID: 0}
 --- !u!1 &8824232397243618537
 GameObject:
   m_ObjectHideFlags: 0
