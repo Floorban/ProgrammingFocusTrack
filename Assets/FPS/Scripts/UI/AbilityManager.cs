@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.FPS.AI;
 
-namespace Unity.FPS.AI
+namespace Unity.FPS.UI
 {
     public class AbilityManager : MonoBehaviour
     {
@@ -9,6 +10,7 @@ namespace Unity.FPS.AI
         [SerializeField] float[] activeTimes;
         [SerializeField] float[] cooldownTimes;
         [SerializeField] KeyCode[] abilityKeys;
+        [SerializeField] InGameMenuManager menuManager;
         enum State
         {
             ready,
@@ -18,14 +20,13 @@ namespace Unity.FPS.AI
         [SerializeField] State[] states;
         [SerializeField] bool[] canUsed;
         [SerializeField] Button[] buttons;
-        [SerializeField] GameObject abilityPanel;
         void Start()
         {
-            abilityPanel.SetActive(false);
+            menuManager = FindObjectOfType<InGameMenuManager>();
             activeTimes = new float[abilities.Length];
             cooldownTimes = new float[abilities.Length];
             states = new State[abilities.Length];
-
+              
             canUsed = new bool[3];
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -36,10 +37,6 @@ namespace Unity.FPS.AI
         void Update()
         {
             HandleAbilityStateSwitch();
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                  abilityPanel.SetActive(!abilityPanel.activeSelf);
-            }
         }
         public void EnableAbility()
         {
@@ -47,6 +44,7 @@ namespace Unity.FPS.AI
             {
                 canUsed[i] = true;
             }
+            menuManager.CloseAbilityPanel();
         }
         void HandleAbilityStateSwitch()
         {

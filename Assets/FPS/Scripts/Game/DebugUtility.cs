@@ -8,12 +8,12 @@ namespace Unity.FPS.Game
             GameObject onObject)
         {
 #if UNITY_EDITOR
-            if (component == null)
+            /*if (component == null)
             {
                 Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " + source.gameObject.name +
                                " expected to find a component of type " + typeof(TO) + " on GameObject " +
                                onObject.name + ", but none were found.");
-            }
+            }*/
 #endif
         }
 

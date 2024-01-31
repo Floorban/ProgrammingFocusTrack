@@ -9,7 +9,7 @@ namespace Unity.FPS.UI
     public class InGameMenuManager : MonoBehaviour
     {
         [Tooltip("Root GameObject of the menu used to toggle its activation")]
-        public GameObject MenuRoot;
+        public GameObject MenuRoot, abilityPanel;
 
         [Tooltip("Master volume when menu is open")] [Range(0.001f, 1f)]
         public float VolumeWhenMenuOpen = 0.5f;
@@ -35,6 +35,7 @@ namespace Unity.FPS.UI
 
         void Start()
         {
+            abilityPanel.SetActive(false);
             m_PlayerInputsHandler = FindObjectOfType<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerInputHandler, InGameMenuManager>(m_PlayerInputsHandler,
                 this);
@@ -87,6 +88,11 @@ namespace Unity.FPS.UI
                 SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
 
             }
+            if (Input.GetButtonDown(GameConstants.k_ButtonNameAbilityPanel)
+                 || (abilityPanel.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
+            {
+                SetPauseMenuActivation(abilityPanel, !MenuRoot.activeSelf);
+            }
 
             if (Input.GetAxisRaw(GameConstants.k_AxisNameVertical) != 0)
             {
@@ -102,8 +108,14 @@ namespace Unity.FPS.UI
         {
             SetPauseMenuActivation(MenuRoot, false);
         }
+        public void CloseAbilityPanel()
+        {
+            SetPauseMenuActivation(abilityPanel, false);
+            Debug.Log("ss");
+        }
 
-        void SetPauseMenuActivation(GameObject panel, bool active)
+
+        public void SetPauseMenuActivation(GameObject panel, bool active)
         {
            panel.SetActive(active);
 
@@ -125,7 +137,7 @@ namespace Unity.FPS.UI
 
         }
     
-    void OnMouseSensitivityChanged(float newValue)
+        void OnMouseSensitivityChanged(float newValue)
         {
             m_PlayerInputsHandler.LookSensitivity = newValue;
         }
