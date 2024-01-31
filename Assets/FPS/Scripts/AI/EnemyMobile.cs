@@ -109,20 +109,20 @@ namespace Unity.FPS.AI
 
                     break;
                 case AIState.Frozen:
+                    // Transition to be active from frozen state again
                     if (freezingtimer >= freeze.freezingTime)
                     {
                         startCounting = false;
                         Animator.speed = 1f;
                         m_EnemyController.isFrozen = false;
-                        AiState = AIState.Patrol;
-                        if (m_EnemyController.IsSeeingTarget && m_EnemyController.IsTargetInAttackRange)
+                        /*if (m_EnemyController.IsSeeingTarget && m_EnemyController.IsTargetInAttackRange)
                         {
                             AiState = AIState.Attack;
                             m_EnemyController.SetNavDestination(transform.position);
-                        }else
-                        {
-                            AiState = AIState.Patrol;
-                        }
+                        }*/
+                        AiState = AIState.Follow;
+                        m_EnemyController.SetNavDestination(m_EnemyController.KnownDetectedTarget.transform.position);
+                        // The player can only freeze the enemies in a radius that's smaller than detected range so always bring it back to follow state
                     }
                     break;
             }
