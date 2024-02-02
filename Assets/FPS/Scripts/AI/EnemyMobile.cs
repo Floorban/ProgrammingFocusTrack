@@ -110,7 +110,7 @@ namespace Unity.FPS.AI
                     break;
                 case AIState.Frozen:
                     // Transition to be active from frozen state again
-                    if (freezingtimer >= freeze.freezingTime)
+                    if (freezingtimer >= freeze.activeTime)
                     {
                         startCounting = false;
                         Animator.speed = 1f;

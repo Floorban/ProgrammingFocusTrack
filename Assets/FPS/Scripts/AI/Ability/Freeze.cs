@@ -7,11 +7,12 @@ namespace Unity.FPS.AI
     public class Freeze : Ability
     {
         //public UnityAction onFreeze;
-        public float freezingTime;
 
-        [Header("SphereCast")]
+        [Header("SphereCast Range")]
         public float radius, maxDistance;
-        public LayerMask layerMask;
+
+        [Header("SphereCast Layer")]
+        [SerializeField] LayerMask layerMask;
         public override void Activate(GameObject player)
         {
             //EventManager.Broadcast(new FreezeEnemyEvent());
