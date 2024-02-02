@@ -39,9 +39,10 @@ namespace Unity.FPS.AI
         const string k_AnimAlertedParameter = "Alerted";
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
-        public Freeze freeze;
+        [Header ("The freeze ability")]
+        [SerializeField] Freeze freeze;
         bool startCounting;
-        [SerializeField] float freezingtimer;
+        float freezingtimer;
 
         void Start()
         {
