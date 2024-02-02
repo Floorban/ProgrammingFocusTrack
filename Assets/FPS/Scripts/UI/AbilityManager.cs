@@ -8,25 +8,30 @@ namespace Unity.FPS.UI
 {
     public class AbilityManager : MonoBehaviour
     {
-        public Ability[] abilities;
+        [Header("UI panel and button settings")]
+        [SerializeField] GameObject abilityPanel;
+        [SerializeField] GameObject buttonPrefab;
+
+        [Header("Ability data")]
+        [SerializeField] Ability[] abilities;
+        [SerializeField] string[] abilityNames;
         [SerializeField] float[] activeTimes;
         [SerializeField] float[] cooldownTimes;
+
+        [Header("Enable Ability")]
         [SerializeField] KeyCode[] abilityKeys;
-        [SerializeField] InGameMenuManager menuManager;
-        [SerializeField] GameObject abilityPanel;
+        [SerializeField] int[] buyPrices;
         enum State
         {
             ready,
             activated,
             cooldown
         }
-        [SerializeField] State[] states;
-        [SerializeField] bool[] canUsed;
-        [SerializeField] Button[] buttons;
-        [SerializeField] GameObject buttonPrefab;
-        [SerializeField] PlayerCharacterController player;
-        [SerializeField] string[] abilityNames;
-        [SerializeField] int[] buyPrices;
+        State[] states;
+        bool[] canUsed;
+        Button[] buttons;
+        PlayerCharacterController player;
+        InGameMenuManager menuManager;
         public UnityAction<string> OnUnlockPowerUp;
         void Start()
         {

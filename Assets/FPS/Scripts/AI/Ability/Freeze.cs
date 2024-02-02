@@ -9,7 +9,7 @@ namespace Unity.FPS.AI
         //public UnityAction onFreeze;
 
         [Header("SphereCast Range")]
-        public float radius, maxDistance;
+        [SerializeField] float radius, maxDistance;
 
         [Header("SphereCast Layer")]
         [SerializeField] LayerMask layerMask;

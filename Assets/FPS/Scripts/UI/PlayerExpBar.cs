@@ -12,9 +12,8 @@ namespace Unity.FPS.UI
         public Image ExpFillImage;
 
         PlayerCharacterController m_PlayerController;
-        private float lerpSpeed;
 
-        public TextMeshProUGUI openConterText;
+        public TextMeshProUGUI coinNumText;
         void Start()
         {
             PlayerCharacterController playerCharacterController =
@@ -29,10 +28,7 @@ namespace Unity.FPS.UI
 
         void Update()
         {
-            //lerpSpeed = 10f * Time.deltaTime;
-            //ExpFillImage.fillAmount = Mathf.Lerp(ExpFillImage.fillAmount, m_PlayerController.currentExperience / m_PlayerController.maxExperience, lerpSpeed);
-
-            openConterText.text = m_PlayerController.coinNum.ToString();
+            coinNumText.text = m_PlayerController.coinNum.ToString();
             ExpFillImage.fillAmount = m_PlayerController.currentExperience / (m_PlayerController.maxExperience);
         }
 

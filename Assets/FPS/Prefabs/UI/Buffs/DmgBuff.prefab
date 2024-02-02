@@ -145,12 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe04e8d2f9d62d429c360bcfe4b640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePanelManager: {fileID: 0}
-  playerController: {fileID: 0}
-  weapon: {fileID: 0}
-  weaponController: {fileID: 0}
-  health: {fileID: 0}
-  button: {fileID: 0}
-  amount: 1
+  amount: 2
   buttonID: 2
-  intAmount: 0
