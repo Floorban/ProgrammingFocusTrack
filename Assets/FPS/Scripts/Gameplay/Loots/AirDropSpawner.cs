@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class AirDropSpawner : MonoBehaviour
 {
+    [Header("Spawning Conditions")]
     [SerializeField] GameObject airDropPrefabs;
     [SerializeField] Vector3 spawnArea;
     [SerializeField] float spawnTimer, timer;
+    [SerializeField] Transform playerTransform;
 
     void Update()
     {
@@ -18,6 +20,7 @@ public class AirDropSpawner : MonoBehaviour
     void SpawnAirDrop()
     {
         Vector3 position = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
+        position += playerTransform.position;
         GameObject newAirDrop = Instantiate(airDropPrefabs);
         newAirDrop.transform.position = position;
     }

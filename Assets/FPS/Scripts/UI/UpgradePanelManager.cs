@@ -8,11 +8,12 @@ namespace Unity.FPS.UI
 {
     public class UpgradePanelManager : MonoBehaviour
     {
+        [Header("Power-up data")]
         [SerializeField] List<Loot> lootList = new List<Loot>();
-        [SerializeField] List<GameObject> spawnedLootObjects = new List<GameObject>();
-
         [SerializeField] string[] powerUpNames;
+        List<GameObject> spawnedLootObjects = new List<GameObject>();
 
+        [Header("Level-up Panel")]
         [SerializeField] GameObject panel;
 
         InGameMenuManager menuManager;
@@ -33,18 +34,6 @@ namespace Unity.FPS.UI
             EventManager.AddListener<LevelUpEvent>(OnLevelUpEvent);
             panel.SetActive(false);
         }
-        /*public void OpenPanel()
-        {
-            menuManager.SetPauseMenuActivation(panel, true);
-            InstantiateButtons(panel.transform, 3);
-
-             Vector3 position = new Vector3(680f, 440f, 0);
-                Vector3 position2 = new Vector3(780f, 440f, 0);
-                Vector3 position3 = new Vector3(880f, 440f, 0);
-                InstantiateButton(position);
-                InstantiateButton(position2);
-                InstantiateButton(position3);
-        }*/
         void OnLevelUpEvent(LevelUpEvent evt)
         {
             menuManager.SetPauseMenuActivation(panel, true);
