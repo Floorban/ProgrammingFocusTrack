@@ -7,15 +7,16 @@ namespace Unity.FPS.UI
 {
     public class UpgradeButton : MonoBehaviour
     {
-        [SerializeField] UpgradePanelManager upgradePanelManager;
-        [SerializeField] PlayerCharacterController playerController;
-        [SerializeField] GameObject weapon;
-        [SerializeField] WeaponController weaponController;
-        [SerializeField] Health health;
+        UpgradePanelManager upgradePanelManager;
+        PlayerCharacterController playerController;
+        GameObject weapon;
+        WeaponController weaponController;
+        Health health;
+        Button button;
 
-        [SerializeField] Button button;
+        [Header("Amount of the power-up's value")]
         [SerializeField] float amount;
-        public int buttonID, intAmount;
+        public int buttonID;
 
         void Start()
         {
@@ -35,7 +36,6 @@ namespace Unity.FPS.UI
             weaponController = weapon.GetComponent<WeaponController>();
             button = GetComponent<Button>();
             button.onClick.AddListener(Clicked);
-
         }
         public void Clicked()
         {
@@ -63,12 +63,8 @@ namespace Unity.FPS.UI
                     weaponController.ModifyReloadDelay(amount);
                     break;
                 case 7:
-                    weaponController.ModifyAmmoCapacity(intAmount);
+                    weaponController.ModifyAmmoCapacity((int)amount);
                     break;
-                case 8:
-                    playerController.SkillScale(amount);
-                    break;
-
             }
 
             //OnUnlockPowerUp.Invoke(powerUpNames[buttonID]);

@@ -32,7 +32,7 @@ namespace Unity.FPS.UI
             //lerpSpeed = 10f * Time.deltaTime;
             //ExpFillImage.fillAmount = Mathf.Lerp(ExpFillImage.fillAmount, m_PlayerController.currentExperience / m_PlayerController.maxExperience, lerpSpeed);
 
-            openConterText.text = m_PlayerController.openCounter.ToString();
+            openConterText.text = m_PlayerController.coinNum.ToString();
             ExpFillImage.fillAmount = m_PlayerController.currentExperience / (m_PlayerController.maxExperience);
         }
 

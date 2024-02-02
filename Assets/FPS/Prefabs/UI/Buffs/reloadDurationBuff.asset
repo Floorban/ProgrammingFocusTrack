@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: 8
+  m_Name: reloadDurationBuff
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 5044715851025321791, guid: 11fbe9277f247b8459873ae36e7853b5,
+  lootPrefab: {fileID: 4748595873274450206, guid: d6342584b336fea4e8a17c82b7533fae,
     type: 3}
-  lootName: reloadspeedbuff
+  lootName: reloadDurationbuff
   dropChance: 100

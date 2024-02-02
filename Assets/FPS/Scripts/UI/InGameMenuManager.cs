@@ -34,7 +34,6 @@ namespace Unity.FPS.UI
         FramerateCounter m_FramerateCounter;
         void Start()
         {  
-            //MenuRoot.SetActive(false);
             pausePanel.SetActive(false);
             abilityPanel.SetActive(false);
 
@@ -83,14 +82,12 @@ namespace Unity.FPS.UI
                     ControlImage.SetActive(false);
                     return;
                 }
-
-                //SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
                 SetPauseMenuActivation(pausePanel, !pausePanel.activeSelf);
             }
+
             if (Input.GetButtonDown(GameConstants.k_ButtonNameAbilityPanel)
                  || (abilityPanel.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
             {
-                //SetPauseMenuActivation(MenuRoot, !MenuRoot.activeSelf);
                 SetPauseMenuActivation(abilityPanel, !abilityPanel.activeSelf);
             }
 
@@ -102,15 +99,6 @@ namespace Unity.FPS.UI
                     LookSensitivitySlider.Select();
                 }
             }
-        }
-
-        public void ClosePauseMenu()
-        {
-            SetPauseMenuActivation(MenuRoot, false);
-        }
-        public void CloseAbilityPanel()
-        {
-            SetPauseMenuActivation(abilityPanel, false);
         }
 
         public void SetPauseMenuActivation(GameObject panel, bool active)

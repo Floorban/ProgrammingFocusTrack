@@ -5,6 +5,7 @@ namespace Unity.FPS.Gameplay
 {
     public class ExpPickUp : Pickup
     {
+        [Header("Amount of this experience point type")]
         [SerializeField] float expAmount;
         protected override void OnPicked(PlayerCharacterController player)
         {

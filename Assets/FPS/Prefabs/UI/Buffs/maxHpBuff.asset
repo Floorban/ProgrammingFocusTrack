@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: 6
+  m_Name: maxHpBuff
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 892494455299457454, guid: 9cae377adb618b24ba0cbf79057f2c60,
+  lootPrefab: {fileID: 2101878285096023782, guid: eb246bcfd67c76048a7f87ed835f0308,
     type: 3}
-  lootName: attackspeedbuff
+  lootName: maxhpbuff
   dropChance: 100

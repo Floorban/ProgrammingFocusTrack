@@ -142,7 +142,7 @@ namespace Unity.FPS.Gameplay
 
         [Header("Leveling system")]
         public float currentExperience, maxExperience;
-        public int currentLevel, openCounter;
+        public int currentLevel, coinNum;
 
         [Header("Power-up modifier")]
         [SerializeField] float moveSpeedModifier, jumpForceModifier;
@@ -156,7 +156,6 @@ namespace Unity.FPS.Gameplay
         }
         void Start()
         {
-            canInput = true;
             // fetch components on the same gameObject
             m_Controller = GetComponent<CharacterController>();
             DebugUtility.HandleErrorIfNullGetComponent<CharacterController, PlayerCharacterController>(m_Controller,
@@ -248,16 +247,6 @@ namespace Unity.FPS.Gameplay
         {
             jumpForceModifier += modifierChange;
         }
-
-        /*private void OnEnable()
-         {
-             ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
-         }
-         private void OnDisable()
-         {
-             ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
-         }*/
-
         public void HandleExperienceChange(float newExpAmount)
         {
             currentExperience += newExpAmount;
@@ -273,7 +262,7 @@ namespace Unity.FPS.Gameplay
         void LevelUp()
         {
             currentLevel++;
-            openCounter++;
+            coinNum++;
             maxExperience += 5;
             EventManager.Broadcast(new LevelUpEvent());
             //levelUpManager.OpenPanel();
@@ -326,10 +315,8 @@ namespace Unity.FPS.Gameplay
                 }
             }
         }
-        public bool canInput;
         void HandleCharacterMovement()
         {
-            if (!canInput) return;
             // horizontal character rotation
             {
                 // rotate the transform with the input speed around its local Y axis

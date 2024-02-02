@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: 1
+  m_Name: jumpBuff
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 2517821441968620774, guid: 6ce9974bc97a24b4d9e1d9d4c71aca5d,
+  lootPrefab: {fileID: 7483217937276369941, guid: 751eca6dc4a133648945134b30e9025a,
     type: 3}
-  lootName: dmgbuff
+  lootName: jumobuff
   dropChance: 100

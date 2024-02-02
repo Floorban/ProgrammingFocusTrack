@@ -30,7 +30,6 @@ namespace Unity.FPS.UI
 
             EventManager.AddListener<LevelUpEvent>(OnLevelUpEvent);
             panel.SetActive(false);
-
         }
         public void OpenPanel()
         {

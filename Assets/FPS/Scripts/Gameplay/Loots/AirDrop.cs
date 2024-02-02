@@ -15,7 +15,7 @@ namespace Unity.FPS.Gameplay
         }
         private void Update()
         {
-            canOpen = playerCharacterController.openCounter >= 1; 
+            canOpen = playerCharacterController.coinNum >= 1; 
         }
         Loot GetDroppedItem()
         {
@@ -50,7 +50,7 @@ namespace Unity.FPS.Gameplay
                 Vector3 position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
                 InstantiateLoot(position);
 
-                playerCharacterController.openCounter--;
+                playerCharacterController.coinNum--;
                 Destroy(gameObject);
             }
             else

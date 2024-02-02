@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879d54f9ac7bfd940aff970e8091a8ac, type: 3}
-  m_Name: 7
+  m_Name: attackSpeed
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 4748595873274450206, guid: d6342584b336fea4e8a17c82b7533fae,
+  lootPrefab: {fileID: 892494455299457454, guid: 9cae377adb618b24ba0cbf79057f2c60,
     type: 3}
-  lootName: reloadDurationbuff
+  lootName: attackspeedbuff
   dropChance: 100

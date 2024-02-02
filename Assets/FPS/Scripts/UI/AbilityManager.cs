@@ -58,12 +58,12 @@ namespace Unity.FPS.UI
         }
         public void EnableAbility(int buttonIndex)
         {
-            if (player.openCounter < buyPrices[buttonIndex])
+            if (player.coinNum < buyPrices[buttonIndex])
             {
-                OnUnlockPowerUp.Invoke($"Need {buyPrices[buttonIndex] - player.openCounter} more coins");
+                OnUnlockPowerUp.Invoke($"Need {buyPrices[buttonIndex] - player.coinNum} more coins");
             }else
             {
-                player.openCounter -= buyPrices[buttonIndex];
+                player.coinNum -= buyPrices[buttonIndex];
                 canUsed[buttonIndex] = true;
                 OnUnlockPowerUp.Invoke(abilityNames[buttonIndex]);
                 buttons[buttonIndex].image.color = Color.red;
