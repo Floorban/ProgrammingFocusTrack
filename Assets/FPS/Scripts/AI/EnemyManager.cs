@@ -11,6 +11,7 @@ namespace Unity.FPS.AI
         public int NumberOfEnemiesTotal { get; private set; }
         public int NumberOfEnemiesRemaining => Enemies.Count;
 
+        [Header("Spawning Conditions")]
         [SerializeField] GameObject enemyPrefabs;
         [SerializeField] Vector3 spawnArea;
         [SerializeField] float spawnTimer, timer;

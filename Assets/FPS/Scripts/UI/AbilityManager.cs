@@ -21,13 +21,13 @@ namespace Unity.FPS.UI
         [Header("Enable Ability")]
         [SerializeField] KeyCode[] abilityKeys;
         [SerializeField] int[] buyPrices;
-        enum State
+        enum AbilityState
         {
             ready,
             activated,
             cooldown
         }
-        State[] states;
+        AbilityState[] states;
         bool[] canUsed;
         Button[] buttons;
         PlayerCharacterController player;
@@ -44,7 +44,7 @@ namespace Unity.FPS.UI
             menuManager = FindObjectOfType<InGameMenuManager>();
             activeTimes = new float[abilities.Length];
             cooldownTimes = new float[abilities.Length];
-            states = new State[abilities.Length];
+            states = new AbilityState[abilities.Length];
               
             canUsed = new bool[3];
             buttons = new Button[3];
@@ -84,33 +84,33 @@ namespace Unity.FPS.UI
                 {
                     switch (states[i])
                     {
-                        case State.ready:
+                        case AbilityState.ready:
                             if (Input.GetKeyDown(abilityKeys[i]))
                             {
                                 abilities[i].Activate(gameObject);
-                                states[i] = State.activated;
+                                states[i] = AbilityState.activated;
                                 activeTimes[i] = abilities[i].activeTime;
                             }
                             break;
-                        case State.activated:
+                        case AbilityState.activated:
                             if (activeTimes[i] > 0)
                             {
                                 activeTimes[i] -= Time.deltaTime;
                             }
                             else
                             {
-                                states[i] = State.cooldown;
+                                states[i] = AbilityState.cooldown;
                                 cooldownTimes[i] = abilities[i].cooldownTime;
                             }
                             break;
-                        case State.cooldown:
+                        case AbilityState.cooldown:
                             if (cooldownTimes[i] > 0)
                             {
                                 cooldownTimes[i] -= Time.deltaTime;
                             }
                             else
                             {
-                                states[i] = State.ready;
+                                states[i] = AbilityState.ready;
                             }
                             break;
                     }

@@ -7,6 +7,7 @@ public class Loot : ScriptableObject
 {
     public GameObject lootPrefab;
     public string lootName;
+    [Range(0, 100)]
     public int dropChance;
     public Loot(string lootName, int dropChance)
     {

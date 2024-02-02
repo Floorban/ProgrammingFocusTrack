@@ -11446,6 +11446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119255502580830958, guid: c996b53e9f849234393d1e90f68d1679,
         type: 3}
+      propertyPath: coinNumText
+      value: 
+      objectReference: {fileID: 2085672272}
+    - target: {fileID: 5119255502580830958, guid: c996b53e9f849234393d1e90f68d1679,
+        type: 3}
       propertyPath: openConterText
       value: 
       objectReference: {fileID: 2085672272}
@@ -11893,6 +11898,7 @@ SceneRoots:
   - {fileID: 3291525241978217376}
   - {fileID: 1402848969}
   - {fileID: 2729281214538404665}
+  - {fileID: 4008933581619590512}
   - {fileID: 2729281213735534851}
   - {fileID: 2729281214152228920}
   - {fileID: 2729281212887052391}
@@ -11912,4 +11918,3 @@ SceneRoots:
   - {fileID: 1355996137}
   - {fileID: 82416864}
   - {fileID: 1852219030}
-  - {fileID: 4008933581619590512}
