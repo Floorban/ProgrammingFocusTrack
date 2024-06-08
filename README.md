@@ -1,6 +1,6 @@
 This repository contains:
 - A Unity 3D project (the original template: https://learn.unity.com/project/fps-template).
-- A UML diagram that analyze the implemented scripts relations.
+- A UML diagram that analyze the implemented scripts relations (you can find the scripts in 'Assets' folder).
 - A technical design document that showcase the research, process and iterations of implementing a new game feature based on the FPS Microgame code base.
 
 To improve my understanding of Unity Engine and C#, I worked on this 8-week programming project that helped me try to mimic the working experience as a programmer in a game company.
